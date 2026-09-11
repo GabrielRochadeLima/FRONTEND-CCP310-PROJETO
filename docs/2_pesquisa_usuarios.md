@@ -22,33 +22,45 @@ Para cada instrumento, apresente:
 
 ---
 
-## Exemplo de entrega
+## Exemplo de entrega (Gabriel preeencheu)
 
-> O exemplo abaixo é fictício — usa como cenário um app universitário de organização de grupos de estudo ("Estuda+") apenas para ilustrar o **nível de detalhe e formato** esperado. Não copie o conteúdo, copie a estrutura.
 
 ### 1) Identificação de Necessidades dos Usuários e Requisitos de UX
 
 **Que dados coletar?**
-- Como os alunos hoje organizam sessões de estudo em grupo (ferramentas usadas, frequência).
-- Principais dificuldades para combinar horários e manter o grupo engajado.
-- Expectativas sobre lembretes, divisão de tópicos de estudo e acompanhamento de progresso.
+
+- Como os usuários atualmente organizam e registram suas leituras;
+- Quais ferramentas utilizam para acompanhar os livros que estão lendo;
+- Com que frequência costumam ler;
+- Principais dificuldades para acompanhar o progresso das leituras;
+- Como os usuários escolhem novos livros;
+- Interesse em receber recomendações de livros;
+- Interesse em estabelecer e acompanhar metas de leitura;
+- Quais informações consideram importantes em uma plataforma de leitura.
 
 **De quem coletar?**
-- Alunos de graduação de Ciência da Computação, do 2º ao 6º semestre, que já participaram de pelo menos um grupo de estudo nos últimos 6 meses.
-- Amostra mínima: 8 alunos para entrevistas, 40 respostas para o questionário.
+
+- Pessoas que possuem o hábito de leitura;
+- Leitores que utilizam aplicativos ou plataformas para registrar seus livros;
+- Alunos de graduação de Ciência da Computação, do 2º ao 6º semestre, que tenham lido pelo menos um livro nos últimos 6 meses;
+- Amostra mínima: 8 alunos para entrevistas e 40 respostas para o questionário;
 - Recrutamento: convite em grupos de turma no WhatsApp/Discord.
 
 ### 2) Aspectos Éticos
 
-Sim, o projeto envolve dados pessoais de participantes (nome, e-mail, respostas sobre hábitos de estudo), portanto:
-- Será aplicado um **Termo de Consentimento Livre e Esclarecido (TCLE)** antes de qualquer coleta, explicando objetivo da pesquisa, uso dos dados e direito de desistência a qualquer momento.
-- Os dados serão coletados de forma **anonimizada** (sem nome/e-mail nas respostas do questionário) e armazenados apenas na equipe, em conformidade com a LGPD (Lei n.º 13.709/2018).
-- Gravações de entrevista serão apagadas ao final do projeto, mantendo-se apenas as transcrições anonimizadas usadas na análise.
+O projeto envolve a coleta de informações fornecidas pelos participantes durante entrevistas e questionários. Por isso:
+
+- Será aplicado um **Termo de Consentimento Livre e Esclarecido (TCLE)** antes da coleta, explicando os objetivos da pesquisa, o uso dos dados e o direito de desistência a qualquer momento;
+- Os dados serão coletados de forma **anonimizada**, evitando a identificação dos participantes nas respostas utilizadas na análise;
+- As informações coletadas serão utilizadas exclusivamente para fins acadêmicos e para o desenvolvimento do projeto;
+- Os dados serão armazenados de forma segura e terão acesso restrito aos integrantes da equipe;
+- Caso sejam realizadas gravações de entrevistas, elas serão feitas somente mediante autorização dos participantes e serão excluídas ao final do projeto, mantendo-se apenas as informações anonimizadas necessárias para a análise.
 
 ### 3) Ferramentas de Coleta de Dados
 
 | Instrumento | Objetivo | Como aplicar | Link/Roteiro |
 | :---- | :---- | :---- | :---- |
-| **Entrevista semiestruturada** | Entender em profundidade como os alunos organizam e mantêm grupos de estudo, e onde o processo falha. | Sessão individual de 20-30 min, presencial ou por chamada de vídeo. Seguir o roteiro fixo, mas permitir perguntas de aprofundamento ("por quê?", "pode dar um exemplo?"). Gravar com autorização e transcrever depois. | Roteiro: 1) Como você organiza sessões de estudo hoje? 2) Conte sobre a última vez que um grupo de estudo não funcionou. 3) O que faria você usar um app específico para isso? |
-| **Questionário (Google Forms)** | Quantificar ferramentas usadas, frequência de grupos de estudo e principais frustrações, em uma amostra maior. | Divulgar o link em grupos de turma, aberto por 1 semana. Sem identificação pessoal, tempo estimado de resposta de 5 min. | `https://forms.google.com/exemplo-estuda-mais` *(placeholder — substituir pelo link real)* |
-| **Grupo focal** | Observar a discussão entre alunos sobre o que tornaria um grupo de estudo "bom", captando divergências de opinião difíceis de obter em entrevista individual. | Sessão única com 5-6 alunos, 45 min, mediada por um membro da equipe seguindo um roteiro de tópicos, com outro membro registrando anotações. | Roteiro de tópicos: hábitos atuais, ferramentas testadas e abandonadas, o que faria o grupo "durar" até a prova. |
+| **Entrevista semiestruturada** | Entender como os usuários organizam suas leituras, quais dificuldades enfrentam e quais recursos esperam encontrar em uma plataforma. | Sessão individual de 20-30 minutos, presencialmente ou por chamada de vídeo. Seguir um roteiro de perguntas, permitindo perguntas adicionais para aprofundar as respostas. | Roteiro: 1) Como você organiza os livros que lê? 2) Como acompanha seu progresso de leitura? 3) Você costuma estabelecer metas de leitura? 4) Como escolhe novos livros? 5) O que faria você utilizar uma plataforma para organizar suas leituras? |
+| **Questionário (Google Forms)** | Coletar informações de uma quantidade maior de usuários sobre hábitos de leitura, ferramentas utilizadas e principais dificuldades. | Divulgar o questionário em grupos de turma e outros grupos de leitores. O questionário ficará disponível durante aproximadamente uma semana e terá tempo estimado de resposta de 5 minutos. | Link do formulário a ser definido. |
+| **Grupo focal** | Identificar opiniões e diferentes perspectivas dos usuários sobre funcionalidades e características desejáveis em uma plataforma de leitura. | Sessão com 5-6 participantes, com duração aproximada de 45 minutos. Um integrante da equipe será responsável pela mediação e outro pelo registro das informações. | Roteiro de tópicos: hábitos de leitura, ferramentas utilizadas, dificuldades encontradas, recomendações de livros, metas de leitura e funcionalidades desejadas. |
+
