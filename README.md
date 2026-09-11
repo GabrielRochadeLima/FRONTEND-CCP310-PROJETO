@@ -12,15 +12,23 @@ Este projeto é desenvolvido pelos seguintes alunos:
 
 Sobre o produto ou serviço que seu grupo está desenvolvendo, responda:
 - Apresente uma breve descrição.
+
+
      O projeto consiste no desenvolvimento de uma plataforma para registro e acompanhamento de obras literárias lidas. O sistema permitirá que os usuários cadastrem seus livros, registrem seu progresso de leitura, organizem suas obras e acompanhem seus hábitos e metas de leitura.
 
 - Apresente o objetivo. 
+
+
     O objetivo da plataforma é facilitar a organização e o acompanhamento das leituras dos usuários, permitindo registrar livros lidos, acompanhar o progresso das leituras, definir metas e receber recomendações de novas obras de acordo com suas preferências.
 
 - Apresente o usuário final.
+
+
     O usuário final será composto principalmente por leitores que desejam organizar suas leituras, acompanhar seu progresso e descobrir novos livros. A plataforma pode ser utilizada tanto por leitores iniciantes quanto por pessoas que possuem o hábito frequente de leitura.
 
 - Apresente os principais benefícios para o usuários.
+
+
     Os principais benefícios são:
 
     - Organização dos livros lidos e em andamento;
@@ -31,6 +39,8 @@ Sobre o produto ou serviço que seu grupo está desenvolvendo, responda:
     - Incentivo à criação e manutenção do hábito de leitura.
     
 - Apresente as funcionalidades.
+
+
     A plataforma contará com as seguintes funcionalidades principais:
 
     - Cadastro de usuários, com informações e preferências de leitura;
@@ -46,6 +56,8 @@ Sobre o produto ou serviço que seu grupo está desenvolvendo, responda:
 
     
 - Apresente o contexto de uso.
+
+
     A plataforma será utilizada por leitores que desejam organizar e acompanhar suas atividades de leitura. O usuário poderá acessar o sistema pelo computador ou dispositivo móvel, cadastrar seus livros, atualizar o progresso, definir metas e consultar recomendações.
 
     Por exemplo, um usuário que esteja lendo um livro poderá cadastrá-lo na plataforma e informar seu progresso. Conforme avançar na leitura, poderá atualizar a quantidade de páginas lidas. O sistema poderá apresentar essas informações em um dashboard e auxiliar o usuário a acompanhar suas metas e descobrir novas obras.
