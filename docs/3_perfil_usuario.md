@@ -28,15 +28,6 @@ Além disso, o comportamento geral aponta para dois padrões principais: leitore
 
 Em síntese, o perfil comportamental e tecnológico desse público é de usuários digitais, jovens, com boa familiaridade com tecnologia, mas com baixa consistência na organização da leitura. A maior parte prefere soluções simples, acessíveis e centralizadas, que ajudem a manter controle dos livros lidos, dos desejados e das metas de leitura sem exigirem muito esforço ou tempo.
 
-3) **Necessidades e Dores Consolidadas**
-- Sintetize (não repita bruto) os principais achados da pesquisa: padrões que se repetiram entre os participantes, necessidades não atendidas e frustrações recorrentes.
-- Aponte, para cada necessidade/dor, quantos participantes (aproximadamente) a mencionaram — isso embasa a priorização nas próximas etapas.
-
-4) **Segmentação (se aplicável)**
-- Caso os dados revelem mais de um grupo de usuários com necessidades distintas, descreva cada segmento e o que os diferencia.
-- Indique qual(is) segmento(s) será(ão) priorizado(s) como personas primárias.
-
----
 
 ### 3) Necessidades e Dores Consolidadas
 
