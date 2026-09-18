@@ -1,6 +1,6 @@
 # Perfil do Usuário
 
-> **_NOTE:_**: Esta entrega consolida e sintetiza os dados coletados na etapa de Pesquisa e Coleta de Dados com Usuários, caracterizando o público-alvo real antes de criar as personas (arquétipos fictícios). Aqui ainda não há personagem — são dados e padrões observados nos participantes reais.
+> **_NOTE:_**: Esta entrega consolida e sintetiza os dados coletados na etapa de Pesquisa e Coleta de Dados com Usuários, caracterizando o público-alvo real antes de criar as personas (arquétipos fictícios).
 
 1) **Perfil Demográfico**
 - Faixa etária, gênero, escolaridade, ocupação, localização geográfica e outros dados demográficos relevantes ao produto/serviço.
@@ -20,37 +20,24 @@
 
 ---
 
-## Exemplo de entrega
-
-> Continuação do exemplo fictício do app "Estuda+" (grupos de estudo universitários), consolidando os dados coletados na etapa de pesquisa. Copie a estrutura, não o conteúdo.
-
-### 1) Perfil Demográfico
-
-- Idade: 18 a 24 anos.
-- Escolaridade: cursando graduação, graduação completa, Ensino Fundamental
-- Ocupação: a maioria concilia estudo com estágio ou trabalho meio período (6 de 8 entrevistados).
-- Localização: região metropolitana.
-
-### 2) Perfil Comportamental e Tecnológico
-
-- Alta familiaridade com tecnologia: a maioria dos usuarios usam smartphone diariamente porém não usam app de controle.
-- Uso de produtos similares: 5 entrevistados registram as vezes as leituras de livros; 6 pessoas não usam um app dedicado a isso.
-- Contexto de uso predominante: à noite.
-
 ### 3) Necessidades e Dores Consolidadas
 
 | Necessidade/Dor | Frequência aproximada | Evidência |
 | :---- | :---- | :---- |
-| Dificuldade em combinar horário comum entre os membros | 7 de 8 entrevistados | "A gente ficava mandando mensagem por dias até fechar um horário" (E4) |
-| Grupo perde engajamento após 1-2 semanas | 6 de 8 entrevistados | Confirmado também nas respostas do questionário (68% relataram abandono do grupo) |
-| Falta de divisão clara de quem estuda qual tópico | 5 de 8 entrevistados | "Todo mundo estudava a mesma coisa e a gente repetia esforço" (E2) |
-| Preocupação com exposição de dados pessoais em grupos abertos | 3 de 8 entrevistados | Mencionado espontaneamente nas entrevistas |
+| Dificuldade em manter controle dos livros lidos e dos que ainda deseja ler | 5 de 8 participantes | Vários respondentes relataram esquecer quais livros já leram, esquecer livros que querem ler e ter dificuldades para organizar a prioridade de leitura. |
+| Falta de uma ferramenta simples e centralizada para organizar leituras | 5 de 8 participantes | Participantes mencionaram a necessidade de “deixar tudo em um só lugar”, usar “um software para isso”, criar “listas de leitura” e organizar livros em cadernos ou aplicativos de forma mais clara. |
+| Dificuldade para escolher o próximo livro e manter consistência na leitura | 5 de 8 participantes | Houve menções a dificuldades para escolher o próximo título, manter metas, cumprir objetivos e organizar a ordem de leitura. |
+| Falta de acompanhamento de metas e progresso | 4 de 8 participantes | Diversos usuários destacaram que tentam estabelecer metas, mas não mantêm o hábito, e pedem mais suporte para gráficos, progresso e planejamento. |
+| Necessidade de descoberta e recomendação de títulos | 3 de 8 participantes | Foram citadas demandas como “descobrir novos livros”, “receber recomendações” e “filtros por gênero” para facilitar a escolha. |
+| Pouca praticidade no registro e organização de detalhes do livro | 3 de 8 participantes | Participantes citaram dificuldades em registrar avaliações, anotações, datas e listas com maior clareza, além de relatos sobre excesso de detalhes em ferramentas existentes. |
+
+A análise geral mostra que o principal problema não é apenas “ler menos”, mas sim a falta de um sistema eficaz para organizar, priorizar e acompanhar a leitura de maneira consistente. A maioria dos participantes ainda usa métodos improvisados, como caderno, planilha, agenda ou até nenhum registro, o que torna a rotina mais frágil e pouco sustentável.
 
 ### 4) Segmentação
 
-Foram identificados dois perfis distintos entre os participantes:
+A partir dos dados, foi possível identificar dois perfis distintos de usuários:
 
-- **Organizador(a)** — toma a iniciativa de criar o grupo e cobrar andamento (2 de 8 entrevistados). Alta motivação, frustra-se com falta de resposta dos demais.
-- **Participante** — entra no grupo já formado, engaja-se enquanto há cobrança externa (6 de 8 entrevistados). Motivação mais dependente do grupo.
+- **Leitor ocasional / pouco estruturado** — representa cerca de 5 de 8 participantes. Esse grupo costuma ler de forma irregular, muitas vezes em momentos livres, e não mantém um método consistente de organização. Eles usam principalmente smartphone, caderno/agenda ou nenhum sistema, e demonstram maior dificuldade para acompanhar livros lidos, estabelecer metas e escolher o próximo título. A necessidade principal desse segmento é ter uma solução simples, visual e prática para organizar a leitura sem exigir muito esforço.
+- **Leitor frequente / mais tecnológico e orientado por controle** — representa cerca de 3 de 8 participantes. Esse perfil lê com mais regularidade, tem maior familiaridade com tecnologia e costuma usar aplicativos ou e-readers. Ele valoriza recursos como listas, filtros por gênero, metas, progresso, recomendações e avaliação de livros. Embora tenha mais afinidade com ferramentas digitais, ainda enfrenta dificuldade em manter disciplina e organização ao longo do tempo.
 
-Segmento priorizado como persona primária: **Participante**, por representar a maioria do público-alvo e concentrar as dores mais citadas (abandono do grupo, falta de divisão de tópicos).
+Segmento priorizado como persona primária: **Leitor ocasional / pouco estruturado**, pois reúne a maior parte do público e concentra as dores mais recorrentes relacionadas a esquecimento, falta de organização, dificuldade de planejamento e baixa manutenção de hábitos de leitura.
