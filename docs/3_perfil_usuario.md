@@ -27,15 +27,15 @@
 ### 1) Perfil Demográfico
 
 - Idade: 18 a 24 anos.
-- Escolaridade: cursando graduação (2º ao 6º semestre).
+- Escolaridade: cursando graduação, graduação completa, Ensino Fundamental
 - Ocupação: a maioria concilia estudo com estágio ou trabalho meio período (6 de 8 entrevistados).
-- Localização: região metropolitana, moradia com a família ou república estudantil.
+- Localização: região metropolitana.
 
 ### 2) Perfil Comportamental e Tecnológico
 
-- Alta familiaridade com tecnologia: todos usam smartphone diariamente e ao menos um app de mensagens em grupo (WhatsApp ou Discord).
-- Uso de produtos similares: 7 de 8 entrevistados já tentaram organizar grupo de estudo por WhatsApp; nenhum usou um app dedicado a isso.
-- Contexto de uso predominante: à noite, entre aulas, e na semana anterior às provas.
+- Alta familiaridade com tecnologia: a maioria dos usuarios usam smartphone diariamente porém não usam app de controle.
+- Uso de produtos similares: 5 entrevistados registram as vezes as leituras de livros; 6 pessoas não usam um app dedicado a isso.
+- Contexto de uso predominante: à noite.
 
 ### 3) Necessidades e Dores Consolidadas
 
