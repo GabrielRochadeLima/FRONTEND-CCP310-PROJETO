@@ -43,8 +43,7 @@ Para cada instrumento, apresente:
 - Pessoas que possuem o hábito de leitura;
 - Leitores que utilizam aplicativos ou plataformas para registrar seus livros;
 - Alunos de graduação de Ciência da Computação, do 2º ao 6º semestre, que tenham lido pelo menos um livro nos últimos 6 meses;
-- Amostra mínima: 8 alunos para entrevistas e 40 respostas para o questionário;
-- Recrutamento: convite em grupos de turma no WhatsApp/Discord.
+- Amostra de 8 pessoas responderam o questionário;
 
 ### 2) Aspectos Éticos
 
@@ -60,7 +59,6 @@ O projeto envolve a coleta de informações fornecidas pelos participantes duran
 
 | Instrumento | Objetivo | Como aplicar | Link/Roteiro |
 | :---- | :---- | :---- | :---- |
-| **Entrevista semiestruturada** | Entender como os usuários organizam suas leituras, quais dificuldades enfrentam e quais recursos esperam encontrar em uma plataforma. | Sessão individual de 20-30 minutos, presencialmente ou por chamada de vídeo. Seguir um roteiro de perguntas, permitindo perguntas adicionais para aprofundar as respostas. | Roteiro: 1) Como você organiza os livros que lê? 2) Como acompanha seu progresso de leitura? 3) Você costuma estabelecer metas de leitura? 4) Como escolhe novos livros? 5) O que faria você utilizar uma plataforma para organizar suas leituras? |
 | **Questionário (Google Forms)** | Coletar informações de uma quantidade maior de usuários sobre hábitos de leitura, ferramentas utilizadas e principais dificuldades. | Divulgar o questionário em grupos de turma e outros grupos de leitores. O questionário ficará disponível durante aproximadamente uma semana e terá tempo estimado de resposta de 5 minutos. | Link do formulário a ser definido. |
 | **Grupo focal** | Identificar opiniões e diferentes perspectivas dos usuários sobre funcionalidades e características desejáveis em uma plataforma de leitura. | Sessão com 5-6 participantes, com duração aproximada de 45 minutos. Um integrante da equipe será responsável pela mediação e outro pelo registro das informações. | Roteiro de tópicos: hábitos de leitura, ferramentas utilizadas, dificuldades encontradas, recomendações de livros, metas de leitura e funcionalidades desejadas. |
 
