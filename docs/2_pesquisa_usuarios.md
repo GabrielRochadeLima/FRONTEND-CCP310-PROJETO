@@ -59,6 +59,5 @@ O projeto envolve a coleta de informações fornecidas pelos participantes duran
 
 | Instrumento | Objetivo | Como aplicar | Link/Roteiro |
 | :---- | :---- | :---- | :---- |
-| **Questionário (Google Forms)** | Coletar informações de uma quantidade maior de usuários sobre hábitos de leitura, ferramentas utilizadas e principais dificuldades. | Divulgar o questionário em grupos de turma e outros grupos de leitores. O questionário ficará disponível durante aproximadamente uma semana e terá tempo estimado de resposta de 5 minutos. | Link do formulário a ser definido. |
-| **Grupo focal** | Identificar opiniões e diferentes perspectivas dos usuários sobre funcionalidades e características desejáveis em uma plataforma de leitura. | Sessão com 5-6 participantes, com duração aproximada de 45 minutos. Um integrante da equipe será responsável pela mediação e outro pelo registro das informações. | Roteiro de tópicos: hábitos de leitura, ferramentas utilizadas, dificuldades encontradas, recomendações de livros, metas de leitura e funcionalidades desejadas. |
+| **Questionário (Google Forms)** | Coletar informações de uma quantidade maior de usuários sobre hábitos de leitura, ferramentas utilizadas e principais dificuldades. | Divulgar o questionário em grupos de turma e outros grupos de leitores. O questionário ficará disponível durante aproximadamente uma semana e terá tempo estimado de resposta de 5 minutos. | [Link do formulário a ser definido.](https://docs.google.com/forms/d/1YZq_u5SuT5qG9Qaaka-ENiQ5BKnNBC2MFy716YqPo9k/edit) |
 
