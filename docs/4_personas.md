@@ -30,7 +30,7 @@
 
 ### Persona primária: Luiz Henrique
 
-![foto de rosto ilustrativa](imagens/Luiz%20Henrique.jpeg)
+![foto de rosto ilustrativa](imagens/Luiz%20Enrique.jpeg)
 
 
 | Campo | Descrição |
