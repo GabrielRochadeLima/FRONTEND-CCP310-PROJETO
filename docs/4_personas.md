@@ -6,7 +6,7 @@
 
 ### Persona primária: Ana Clara
 
-![foto de rosto ilustrativa](imagens/random-person.jpeg)
+![foto de rosto ilustrativa](imagens/Ana Clara.jpeg)
 
 | Campo | Descrição |
 | :---- | :---- |
@@ -29,7 +29,7 @@
 
 ### Persona primária: Lucas Henrique
 
-![foto de rosto ilustrativa](imagens/random-person.jpeg)
+![foto de rosto ilustrativa](imagens/Luis henrique.jpeg)
 
 | Campo | Descrição |
 | :---- | :---- |
