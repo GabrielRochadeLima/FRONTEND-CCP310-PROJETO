@@ -28,9 +28,9 @@
 | **Dores** | Livros e recomendações espalhados em diferentes lugares; dificuldade para acompanhar o progresso; esquecimento de livros que gostaria de ler; dificuldade para escolher a próxima leitura. |
 | **Ganhos** | Biblioteca organizada, acompanhamento visual do progresso, metas de leitura, histórico de livros e recomendações que facilitem a escolha da próxima leitura. |
 
-### Persona primária: Lucas Henrique
+### Persona primária: Luiz Henrique
 
-![foto de rosto ilustrativa](imagens/Luis%20henrique.jpeg)
+![foto de rosto ilustrativa](imagens/Luiz%20Henrique.jpeg)
 
 
 | Campo | Descrição |
