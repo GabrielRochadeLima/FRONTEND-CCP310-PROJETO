@@ -1,77 +1,108 @@
 # Análise de Tarefas
 
-> **_NOTE:_**: Enquanto o Cenário de Análise/Problema descreve a situação em prosa, a Análise de Tarefas modela formalmente como o usuário executa as funcionalidades mais importantes da interface/produto. Isso alimenta diretamente a Arquitetura de Informação e o Fluxo do Usuário na próxima etapa.
+## 1. HTA (Hierarchical Task Analysis)
 
-A equipe deve modelar pelo menos **1 HTA e 1 GOMS**, cobrindo ao menos **4 funcionalidades diferentes** entre os dois modelos. Cada diagrama/tabela deve vir acompanhado de um texto explicando a funcionalidade modelada.
+### HTA: Cadastrar e organizar livros
 
-1) **HTA (Hierarchical Task Analysis)**
-- Decomponha a tarefa em objetivo principal → subtarefas → operações, em uma estrutura hierárquica (árvore).
-- Todo nó que tiver mais de um filho deve trazer, dentro da própria caixa, o **plano de execução** referenciando os filhos pelo número local (1, 2, 3...): `>` sequência (ex.: `1>2` = faça 1, depois 2), `+` simultâneo/sem ordem definida (ex.: `1+2` = faça 1 e 2, em qualquer ordem), `/` alternativa (ex.: `1/2` = faça 1 ou 2, não ambos). Quando o plano não se encaixar nesses três casos (ex.: repetição), descreva-o em prosa dentro da caixa.
+**Funcionalidade:** permitir que o usuário cadastre livros em sua biblioteca pessoal e organize cada título de acordo com sua situação de leitura.
 
-2) **GOMS (Goals, Operators, Methods, Selection Rules)**
-
-Escreva como um esboço textual hierárquico (não em tabela), no formato:
-
-- `GOAL n`: o objetivo (pode ser decomposto em subgoals `GOAL n.1`, `GOAL n.2`...).
-- `METHOD n.X`: um dos métodos possíveis para atingir o goal acima, identificado por uma letra (`A`, `B`, `C`...).
-- `(SEL. RULE: ...)`: logo abaixo de cada METHOD, entre parênteses — a condição que leva o usuário a escolher esse método em vez de outro. Só existe quando há mais de um método para o mesmo goal.
-- `OP. n.X.k`: os operadores (ações atômicas — clique, digitação, gesto, verificação visual) que compõem o método, numerados em sequência.
-
----
-
-## Exemplo de entrega
-
-> Continuação do exemplo fictício do app "Estuda+". Copie a estrutura, não o conteúdo.
-
-### HTA — Criar um grupo de estudo
-
-**Funcionalidade**: permitir que um aluno crie um novo grupo de estudo e convide colegas, definindo os tópicos a dividir.
-
-> O plano fica escrito dentro da própria caixa do nó pai, logo abaixo da descrição da tarefa.
+O objetivo é facilitar o registro dos livros que o usuário deseja ler, está lendo ou já terminou.
 
 ```mermaid
-graph TD
-    A["0. Criar grupo de estudo<br/>1>2>3"] --> B["1. Definir dados do grupo<br/>1+2"]
-    A --> C["2. Convidar colegas<br/>1>2"]
-    A --> D["3. Dividir tópicos<br/>1, depois repetir 2 para cada tópico pendente"]
-    B --> B1["1.1 Inserir nome do grupo"]
-    B --> B2["1.2 Escolher disciplina/prova"]
-    C --> C1["2.1 Gerar link de convite"]
-    C --> C2["2.2 Compartilhar link<br/>1/2"]
-    C2 --> C2a["2.2.1 Compartilhar via WhatsApp"]
-    C2 --> C2b["2.2.2 Copiar link manualmente"]
-    D --> D1["3.1 Listar tópicos da prova"]
-    D --> D2["3.2 Atribuir tópico a cada membro"]
+flowchart TD
+    A["0. Organizar biblioteca pessoal
+    Plano: 1>2"]
+    B["1. Cadastrar livro
+    Plano: 1>2>3"]
+    C["2. Organizar livro
+    Plano: 1>2"]
+    D["1. Buscar título"]
+    E["2. Selecionar livro"]
+    F["3. Adicionar à biblioteca"]
+    G["1. Escolher situação
+    Plano: 1/2/3"]
+    H["2. Salvar organização"]
+    I["1. Quero ler"]
+    J["2. Lendo"]
+    K["3. Lido"]
+
+    A --> B
+    A --> C
+    B --> D
+    B --> E
+    B --> F
+    C --> G
+    C --> H
+    G --> I
+    G --> J
+    G --> K
 ```
 
-- **Plano 0 (`1>2>3`)**: definir os dados do grupo, depois convidar colegas, depois dividir os tópicos — nessa ordem.
-- **Plano 1 (`1+2`)**: nome do grupo e disciplina/prova são preenchidos no mesmo formulário, em qualquer ordem.
-- **Plano 2 (`1>2`)**: só é possível compartilhar o link depois de gerá-lo.
-- **Plano 2.2 (`1/2`)**: o organizador escolhe **um** dos dois canais — WhatsApp ou copiar o link manualmente — nunca os dois.
-- **Plano 3 (`1>2`)**: lista os tópicos da prova e depois atribui responsável para cada tópico pendente.
+**Plano 0 (1>2):** primeiro o usuário cadastra o livro e depois organiza sua situação de leitura.
 
-### GOMS — Marcar um tópico como estudado
+**Plano 1 (1>2>3):** pesquisa o título, seleciona o livro encontrado e adiciona à biblioteca.
 
-**Funcionalidade**: permitir que o participante registre que concluiu o estudo de um tópico atribuído a ele.
+**Plano 2 (1>2):** escolhe a situação de leitura e salva a informação.
 
+**Plano 2.1 (1/2/3):** seleciona uma das três situações disponíveis: quero ler, lendo ou lido.
+
+## 2. GOMS (Goals, Operators, Methods, Selection Rules)
+
+### GOMS: Atualizar o progresso de leitura
+
+**Funcionalidade:** permitir que o usuário registre seu avanço em um livro, acompanhando a quantidade de páginas lidas.
+
+```text
+GOAL 0: atualizar o progresso de leitura de um livro
+
+  GOAL 1: acessar o livro desejado
+
+    METHOD 1.A: acessar pela biblioteca
+    (SEL. RULE: o usuário está na tela inicial)
+      OP. 1.A.1: clicar na opção "Minha biblioteca"
+      OP. 1.A.2: localizar o livro na lista
+      OP. 1.A.3: clicar no livro desejado
+
+    METHOD 1.B: utilizar a pesquisa
+    (SEL. RULE: o usuário não encontra o livro na lista)
+      OP. 1.B.1: clicar no campo de pesquisa
+      OP. 1.B.2: digitar o título do livro
+      OP. 1.B.3: selecionar o resultado encontrado
+
+  GOAL 2: registrar o progresso
+
+    METHOD 2.A: atualizar as páginas lidas
+      OP. 2.A.1: clicar em "Atualizar progresso"
+      OP. 2.A.2: digitar a página atual
+      OP. 2.A.3: clicar em "Salvar"
+      OP. 2.A.4: verificar o progresso atualizado
 ```
-GOAL 0: marcar o tópico "Grafos" como estudado
 
-  GOAL 1: chegar até a tela do tópico "Grafos"
+### GOMS: Consultar metas de leitura
 
-    METHOD 1.A: navegar pela aba "Meu grupo"
-    (SEL. RULE: app está na tela inicial, sem notificação pendente)
-      OP. 1.A.1: tocar na aba "Meu grupo"
-      OP. 1.A.2: localizar o tópico "Grafos" na lista
-      OP. 1.A.3: tocar no tópico "Grafos"
+**Funcionalidade:** permitir que o usuário consulte suas metas de leitura e visualize quantos livros já concluiu durante o período.
 
-    METHOD 1.B: acessar direto pela notificação
-    (SEL. RULE: existe notificação de lembrete para o tópico "Grafos")
-      OP. 1.B.1: tocar na notificação do lembrete
-      OP. 1.B.2: aguardar a tela do tópico abrir
+```text
+GOAL 0: consultar o acompanhamento das metas
 
-  GOAL 2: confirmar a conclusão do tópico
-    METHOD 2.A: marcar como concluído
-      OP. 2.A.1: tocar no botão "Concluí"
-      OP. 2.A.2: confirmar na caixa de diálogo
+  GOAL 1: acessar a área de metas
+
+    METHOD 1.A: acessar pelo menu principal
+      OP. 1.A.1: clicar na opção "Metas"
+      OP. 1.A.2: aguardar o carregamento das informações
+
+  GOAL 2: visualizar o desempenho
+
+    METHOD 2.A: consultar o resumo da meta
+      OP. 2.A.1: localizar a meta cadastrada
+      OP. 2.A.2: verificar a quantidade de livros concluídos
+      OP. 2.A.3: visualizar o progresso apresentado
 ```
+
+## 3. Considerações finais
+
+A análise de tarefas permitiu organizar as principais ações que os usuários deverão realizar na plataforma.
+
+O HTA apresentou as etapas necessárias para cadastrar e organizar livros, enquanto o GOMS detalhou as ações para atualizar o progresso e consultar metas de leitura.
+
+Esses modelos ajudam a entender como as funcionalidades devem ser estruturadas, facilitando o desenvolvimento da arquitetura de informação e dos fluxos de navegação nas próximas etapas.
