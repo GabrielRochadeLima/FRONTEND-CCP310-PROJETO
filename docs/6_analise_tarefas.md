@@ -4,105 +4,79 @@
 
 ### HTA: Cadastrar e organizar livros
 
-**Funcionalidade:** permitir que o usuário cadastre livros em sua biblioteca pessoal e organize cada título de acordo com sua situação de leitura.
-
-O objetivo é facilitar o registro dos livros que o usuário deseja ler, está lendo ou já terminou.
+O HTA apresenta as etapas para adicionar um livro à biblioteca e definir sua situação de leitura.
 
 ```mermaid
 flowchart TD
-    A["0. Organizar biblioteca pessoal
-    Plano: 1>2"]
-    B["1. Cadastrar livro
-    Plano: 1>2>3"]
-    C["2. Organizar livro
-    Plano: 1>2"]
-    D["1. Buscar título"]
-    E["2. Selecionar livro"]
-    F["3. Adicionar à biblioteca"]
-    G["1. Escolher situação
-    Plano: 1/2/3"]
-    H["2. Salvar organização"]
-    I["1. Quero ler"]
-    J["2. Lendo"]
-    K["3. Lido"]
-
-    A --> B
-    A --> C
-    B --> D
-    B --> E
-    B --> F
-    C --> G
-    C --> H
-    G --> I
-    G --> J
-    G --> K
+    A["0. Cadastrar e organizar livros"]
+    A --> B["1. Cadastrar livro"]
+    A --> C["2. Organizar livro"]
+    B --> D["1.1 Pesquisar título"]
+    B --> E["1.2 Selecionar livro"]
+    B --> F["1.3 Adicionar à biblioteca"]
+    C --> G["2.1 Escolher situação"]
+    C --> H["2.2 Salvar"]
+    G --> I["Quero ler / Lendo / Lido"]
 ```
 
-**Plano 0 (1>2):** primeiro o usuário cadastra o livro e depois organiza sua situação de leitura.
+**Plano 0 (1>2):** cadastrar o livro e depois organizar sua situação.
 
-**Plano 1 (1>2>3):** pesquisa o título, seleciona o livro encontrado e adiciona à biblioteca.
+**Plano 1 (1>2>3):** pesquisar, selecionar e adicionar o livro.
 
-**Plano 2 (1>2):** escolhe a situação de leitura e salva a informação.
+**Plano 2 (1>2):** escolher a situação e salvar.
 
-**Plano 2.1 (1/2/3):** seleciona uma das três situações disponíveis: quero ler, lendo ou lido.
+**Plano 2.1 (1/2/3):** escolher entre quero ler, lendo ou lido.
 
 ## 2. GOMS (Goals, Operators, Methods, Selection Rules)
 
-### GOMS: Atualizar o progresso de leitura
+### GOMS: Atualizar progresso de leitura
 
-**Funcionalidade:** permitir que o usuário registre seu avanço em um livro, acompanhando a quantidade de páginas lidas.
+O usuário acessa um livro e registra a página em que parou.
 
 ```text
-GOAL 0: atualizar o progresso de leitura de um livro
+GOAL 0: Atualizar o progresso de leitura
 
-  GOAL 1: acessar o livro desejado
+  GOAL 1: Acessar o livro
 
-    METHOD 1.A: acessar pela biblioteca
-    (SEL. RULE: o usuário está na tela inicial)
-      OP. 1.A.1: clicar na opção "Minha biblioteca"
-      OP. 1.A.2: localizar o livro na lista
-      OP. 1.A.3: clicar no livro desejado
+    METHOD 1.A: Pela biblioteca
+    (SEL. RULE: livro disponível na biblioteca)
+      OP. 1.A.1: Abrir "Minha biblioteca"
+      OP. 1.A.2: Selecionar o livro
 
-    METHOD 1.B: utilizar a pesquisa
-    (SEL. RULE: o usuário não encontra o livro na lista)
-      OP. 1.B.1: clicar no campo de pesquisa
-      OP. 1.B.2: digitar o título do livro
-      OP. 1.B.3: selecionar o resultado encontrado
+    METHOD 1.B: Pela pesquisa
+    (SEL. RULE: livro não localizado na lista)
+      OP. 1.B.1: Abrir a pesquisa
+      OP. 1.B.2: Digitar o título
+      OP. 1.B.3: Selecionar o livro
 
-  GOAL 2: registrar o progresso
+  GOAL 2: Registrar progresso
 
-    METHOD 2.A: atualizar as páginas lidas
-      OP. 2.A.1: clicar em "Atualizar progresso"
-      OP. 2.A.2: digitar a página atual
-      OP. 2.A.3: clicar em "Salvar"
-      OP. 2.A.4: verificar o progresso atualizado
+    METHOD 2.A: Atualizar páginas
+      OP. 2.A.1: Clicar em "Atualizar progresso"
+      OP. 2.A.2: Informar a página atual
+      OP. 2.A.3: Salvar
 ```
 
 ### GOMS: Consultar metas de leitura
 
-**Funcionalidade:** permitir que o usuário consulte suas metas de leitura e visualize quantos livros já concluiu durante o período.
+O usuário acessa a área de metas para verificar seu desempenho.
 
 ```text
-GOAL 0: consultar o acompanhamento das metas
+GOAL 0: Consultar metas de leitura
 
-  GOAL 1: acessar a área de metas
+  GOAL 1: Acessar metas
 
-    METHOD 1.A: acessar pelo menu principal
-      OP. 1.A.1: clicar na opção "Metas"
-      OP. 1.A.2: aguardar o carregamento das informações
+    METHOD 1.A: Pelo menu principal
+      OP. 1.A.1: Clicar em "Metas"
 
-  GOAL 2: visualizar o desempenho
+  GOAL 2: Consultar progresso
 
-    METHOD 2.A: consultar o resumo da meta
-      OP. 2.A.1: localizar a meta cadastrada
-      OP. 2.A.2: verificar a quantidade de livros concluídos
-      OP. 2.A.3: visualizar o progresso apresentado
+    METHOD 2.A: Visualizar informações
+      OP. 2.A.1: Selecionar a meta
+      OP. 2.A.2: Verificar livros concluídos
+      OP. 2.A.3: Consultar o progresso
 ```
 
 ## 3. Considerações finais
 
-A análise de tarefas permitiu organizar as principais ações que os usuários deverão realizar na plataforma.
-
-O HTA apresentou as etapas necessárias para cadastrar e organizar livros, enquanto o GOMS detalhou as ações para atualizar o progresso e consultar metas de leitura.
-
-Esses modelos ajudam a entender como as funcionalidades devem ser estruturadas, facilitando o desenvolvimento da arquitetura de informação e dos fluxos de navegação nas próximas etapas.
+O HTA mostra como cadastrar e organizar livros, enquanto o GOMS detalha as ações para atualizar o progresso e consultar metas. Essa análise ajuda a definir as funcionalidades e a navegação da plataforma.
