@@ -1,16 +1,73 @@
 # Arquitetura de Informação e Fluxo do Usuário
 
-> **_NOTE:_**: Esta entrega organiza como o conteúdo/funcionalidades estão estruturados e como o usuário se move entre eles, antes de partir para a prototipação.
+## 1. Arquitetura de Informação
 
-1) **Arquitetura de Informação (Sitemap)**
+A plataforma foi organizada para que o usuário consiga encontrar seus livros, acompanhar leituras e consultar metas de forma simples.
 
-- Liste todas as telas/seções principais do produto ou serviço.
-- Organize essas telas em uma hierarquia (diagrama de sitemap), mostrando como estão agrupadas e conectadas.
-- Justifique a organização escolhida com base nas necessidades identificadas nas personas e cenários.
+```mermaid
+flowchart TD
+    A["Plataforma de Leitura"]
+    A --> B["Início"]
+    A --> C["Minha Biblioteca"]
+    A --> D["Pesquisar Livros"]
+    A --> E["Metas"]
+    C --> F["Quero ler / Lendo / Lido"]
+    C --> G["Atualizar progresso"]
+    D --> H["Adicionar livro"]
+    E --> I["Criar / Consultar metas"]
+```
 
-2) **Fluxo do Usuário (User Flow)**
+## 2. Fluxo do Usuário
 
-> **_NOTE:_**: 1 fluxograma por funcionalidade principal (mínimo 4 funcionalidades diferentes), cada um com um texto explicando a funcionalidade e o objetivo do usuário.
+### 2.1 Cadastrar livro
 
-- Para cada funcionalidade escolhida, desenhe o fluxograma de passos que o usuário percorre do início ao fim da tarefa (pontos de decisão, telas intermediárias, estados de erro/sucesso).
-- Destaque possíveis atalhos ou caminhos alternativos.
+O usuário pesquisa um título e adiciona à biblioteca.
+
+```mermaid
+flowchart LR
+    A["Pesquisar"] --> B{"Encontrou?"}
+    B -->|Sim| C["Adicionar livro"]
+    B -->|Não| D["Nova pesquisa"]
+    D --> A
+    C --> E([Concluído])
+```
+
+### 2.2 Organizar biblioteca
+
+O usuário seleciona um livro e altera sua situação de leitura.
+
+```mermaid
+flowchart LR
+    A["Biblioteca"] --> B{"Livro disponível?"}
+    B -->|Sim| C["Alterar situação"]
+    B -->|Não| D["Pesquisar livro"]
+    C --> E([Salvar])
+```
+
+### 2.3 Atualizar progresso
+
+O usuário informa a página atual do livro.
+
+```mermaid
+flowchart LR
+    A["Selecionar livro"] --> B["Informar página"]
+    B --> C{"Valor válido?"}
+    C -->|Sim| D([Salvar])
+    C -->|Não| B
+```
+
+### 2.4 Consultar metas
+
+O usuário acessa suas metas para verificar o progresso.
+
+```mermaid
+flowchart LR
+    A["Metas"] --> B{"Existe meta?"}
+    B -->|Sim| C["Ver progresso"]
+    B -->|Não| D["Criar meta"]
+    D --> C
+```
+
+## 3. Considerações finais
+
+Os fluxos mostram como o usuário poderá realizar as principais tarefas da plataforma. A ideia é manter uma navegação simples, com poucas etapas e acesso rápido às funcionalidades.
