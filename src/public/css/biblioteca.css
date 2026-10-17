@@ -1,0 +1,22 @@
+.ferramentas-biblioteca { display: flex; align-items: center; gap: 16px; margin-bottom: 19px; }
+.busca-biblioteca { position: relative; flex: 1; }
+.busca-biblioteca svg { position: absolute; top: 13px; left: 15px; color: var(--secundario); }
+.busca-biblioteca .campo { padding-left: 43px; }
+.lista-filtros { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin-bottom: 23px; }
+.filtro { background: #fff; border: 1px solid var(--borda); color: #607268; border-radius: 9px; padding: 10px 20px; font-size: 12px; font-weight: 700; }
+.filtro.ativo { background: var(--verde); border-color: var(--verde); color: #fff; }
+.grade-biblioteca { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 16px; }
+.cartao-biblioteca { padding: 20px; min-width: 0; }
+.cartao-biblioteca-capa { display: flex; justify-content: center; background: #F6F7F4; border-radius: 9px; padding: 20px 6px; margin-bottom: 15px; }
+.cartao-biblioteca-capa img { width: 106px; height: 147px; object-fit: cover; box-shadow: 0 8px 12px #2c37301a; }
+.cartao-biblioteca h3 { margin: 0 0 4px; font-size: 15px; font-weight: 800; }
+.cartao-biblioteca .autor { margin: 0 0 14px; color: var(--secundario); font-size: 12px; }
+.cartao-biblioteca .situacao { margin: 0 0 15px; display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.selo-status { display: inline-flex; align-items: center; padding: 5px 10px; border-radius: 8px; background: #DDEDE4; color: #246B55; font-size: 11px; font-weight: 700; }
+.selo-status.quero { background: #FEF1D9; color: #A76F25; }
+.selo-status.lido { background: #E8F2F8; color: #3B7EAE; }
+.cartao-biblioteca .paginas { color: var(--secundario); font-size: 11px; margin: 10px 0 15px; }
+.botoes-livro { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.botoes-livro button { padding: 10px 6px; font-size: 11px; }
+@media(max-width:1000px) { .grade-biblioteca { grid-template-columns: repeat(3,minmax(0,1fr)); } }
+@media(max-width:767px) { .grade-biblioteca { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 10px; } .cartao-biblioteca { padding: 13px; } .cartao-biblioteca-capa { padding: 12px 4px; } .cartao-biblioteca-capa img { width: 75px; height: 111px; } .cartao-biblioteca h3 { font-size: 13px; } .ferramentas-biblioteca { flex-direction: column; align-items: stretch; } .botoes-livro { grid-template-columns: 1fr; } .filtro { padding: 9px 13px; } }

@@ -1,67 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Cadastro | LeituraJá
-  </title>
-  <link href="https://fonts.googleapis.com" rel="preconnect"/>
-  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-  <link href="css/estilo.css" rel="stylesheet"/>
- </head>
- <body>
-  <header class="cabecalho-site">
-   <div class="cabecalho-conteudo cabecalho-publico">
-    <a class="marca" href="login.html">
-     Leitura
-     <span>
-      Já
-     </span>
-    </a>
-   </div>
-  </header>
-  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-7 md:py-10">
-   <div class="cartao max-w-xl mx-auto p-6 sm:p-10">
-    <h1 class="text-3xl font-extrabold mb-2">
-     Criar conta
-    </h1>
-    <p class="text-[#75837B] mb-8">
-     Comece sua jornada de leitura.
-    </p>
-    <form class="space-y-5" id="formulario-cadastro">
-     <label class="block text-sm font-semibold">
-      Nome
-      <input autocomplete="name" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="nome" required="" type="text"/>
-     </label>
-     <label class="block text-sm font-semibold">
-      E-mail
-      <input autocomplete="email" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="email" required="" type="email"/>
-     </label>
-     <label class="block text-sm font-semibold">
-      Senha
-      <input autocomplete="new-password" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="senha" minlength="8" required="" type="password"/>
-     </label>
-     <label class="block text-sm font-semibold">
-      Confirmar senha
-      <input autocomplete="new-password" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="confirmar-senha" minlength="8" required="" type="password"/>
-     </label>
-     <p class="text-red-600 text-sm" id="mensagem-cadastro" role="alert">
-     </p>
-     <button class="w-full bg-[#246B55] text-white font-bold rounded-xl py-3" type="submit">
-      Criar conta
-     </button>
-    </form>
-    <p class="text-center text-sm text-[#75837B] mt-6">
-     Já tem conta?
-     <a class="text-[#246B55] font-bold" href="login.html">
-      Entrar
-     </a>
-    </p>
-   </div>
-  </main>
-  <script src="js/cadastro.js">
-  </script>
- </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro | LeituraJá</title>
+        <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/interface.css">
+    <link rel="stylesheet" href="css/autenticacao.css">
+        <script src="js/cadastro.js" defer></script>
+</head>
+<body>
+    <header class="cabecalho-publico"><div class="largura"><a class="logo" href="login.html"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.5v14M12 6.5C9.5 4.5 5.5 4 2.5 5v13.5C6.5 17.3 10 18 12 20.5c2-2.5 5.5-3.2 9.5-2V5C18.5 4 14.5 4.5 12 6.5Z"/></svg><span>LeituraJá</span></a></div></header>
+    <main class="autenticacao-area largura"><section class="cartao-autenticacao cartao-cadastro"><div class="formulario-autenticacao">
+        <h2>Criar conta</h2><p class="descricao">Comece a organizar suas leituras no LeituraJá.</p>
+        <form id="formulario-cadastro">
+            <div class="grupo-campo"><label class="rotulo" for="nome">Nome</label><input class="campo" id="nome" type="text" autocomplete="name" maxlength="100" required></div>
+            <div class="grupo-campo"><label class="rotulo" for="email">E-mail</label><input class="campo" id="email" type="email" autocomplete="email" required></div>
+            <div class="grupo-campo"><label class="rotulo" for="senha">Senha</label><input class="campo" id="senha" type="password" autocomplete="new-password" minlength="8" required></div>
+            <div class="grupo-campo"><label class="rotulo" for="confirmar-senha">Confirmar senha</label><input class="campo" id="confirmar-senha" type="password" autocomplete="new-password" minlength="8" required></div>
+            <p id="mensagem-cadastro" class="erro" role="alert"></p><button class="botao-principal" type="submit">Criar conta</button>
+        </form><p class="rodape-autenticacao">Já tem uma conta? <a href="login.html">Fazer login</a></p>
+    </div></section></main>
+
+</body>
 </html>

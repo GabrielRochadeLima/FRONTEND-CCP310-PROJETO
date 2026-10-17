@@ -1,65 +1,30 @@
 let livros = [];
 let filtroAtual = "Todos";
+
 const listaLivros = document.getElementById("lista-livros");
+const campoPesquisa = document.getElementById("pesquisa-livros");
 const janelaLivro = document.getElementById("janela-livro");
 const formularioLivro = document.getElementById("formulario-livro");
-const pesquisaLivros = document.getElementById("pesquisa-livros");
 const mensagemFormulario = document.getElementById("mensagem-formulario");
-async function carregarLivros(){
-    try{
-        const resposta = await fetch("/api/livros");
-        if (resposta.status === 401){
-            window.location.href = "login.html";
-            return;
-        }
-        if (!resposta.ok) throw new Error("Erro ao buscar livros");
-        livros = await resposta.json();
-        mostrarLivros();
-    }
-    catch (erro){
-        console.error(erro);
-        listaLivros.textContent = "Não foi possível carregar os livros.";
-    }
-}
-function mostrarLivros(){
-    listaLivros.innerHTML = "";
-    const pesquisa = pesquisaLivros.value.toLowerCase();
-    const filtrados = livros.filter(livro => (filtroAtual === "Todos" || livro.status === filtroAtual) && (livro.titulo.toLowerCase().includes(pesquisa) || livro.autor.toLowerCase().includes(pesquisa)));
-    document.getElementById("quantidade-livros").textContent = `${filtrados.length} livros`;
-    if (!filtrados.length){
-        listaLivros.textContent = "Nenhum livro encontrado.";
-        return;
-    }
-    filtrados.forEach(livro =>{
-        const card = document.createElement("article"); card.className = "cartao p-5 flex gap-4";
-        const capa = document.createElement("div"); capa.className = "capa capa-azul"; capa.textContent = "LeituraJá";
-        const coluna = document.createElement("div"); coluna.className = "flex-1 min-w-0";
-        const titulo = document.createElement("h3"); titulo.textContent = livro.titulo; titulo.className = "font-bold mb-1";
-        const autor = document.createElement("p"); autor.textContent = livro.autor; autor.className = "text-sm text-[#75837B] mb-2";
-        const status = document.createElement("p"); status.textContent = livro.status; status.className = "text-sm text-[#246B55] font-semibold mb-2";
-        const paginas = document.createElement("p"); paginas.textContent = `${livro.pagina_atual || 0} / ${livro.total_paginas || 0} páginas`; paginas.className = "text-sm text-[#75837B] mb-3";
-        const botoes = document.createElement("div"); botoes.className = "flex flex-wrap gap-2";
-        const editar = document.createElement("button"); editar.textContent = "Editar"; editar.className = "bg-[#DDEDE4] text-[#246B55] px-3 py-2 rounded-lg text-sm cursor-pointer"; editar.onclick = () => editarLivro(livro.id);
-        const excluir = document.createElement("button"); excluir.textContent = "Excluir"; excluir.className = "bg-red-50 text-red-600 px-3 py-2 rounded-lg text-sm cursor-pointer"; excluir.onclick = () => excluirLivro(livro.id);
-        botoes.append(editar, excluir); coluna.append(titulo, autor, status, paginas, botoes); card.append(capa, coluna); listaLivros.appendChild(card);
-    }
-    );
-}
-function abrirFormulario(){
+
+function abrirFormulario() {
     formularioLivro.reset();
     document.getElementById("livro-id").value = "";
+    document.getElementById("livro-pagina-atual").value = "0";
     document.getElementById("titulo-formulario").textContent = "Adicionar livro";
     mensagemFormulario.textContent = "";
-    janelaLivro.classList.remove("hidden");
-    janelaLivro.classList.add("flex");
+    janelaLivro.hidden = false;
+    document.getElementById("livro-titulo").focus();
 }
-function fecharFormulario(){
-    janelaLivro.classList.add("hidden");
-    janelaLivro.classList.remove("flex");
+
+function fecharFormulario() {
+    janelaLivro.hidden = true;
 }
-function editarLivro(id){
+
+function editarLivro(id) {
     const livro = livros.find(item => Number(item.id) === Number(id));
     if (!livro) return;
+
     document.getElementById("livro-id").value = livro.id;
     document.getElementById("livro-titulo").value = livro.titulo;
     document.getElementById("livro-autor").value = livro.autor;
@@ -68,62 +33,181 @@ function editarLivro(id){
     document.getElementById("livro-pagina-atual").value = livro.pagina_atual || 0;
     document.getElementById("titulo-formulario").textContent = "Editar livro";
     mensagemFormulario.textContent = "";
-    janelaLivro.classList.remove("hidden");
-    janelaLivro.classList.add("flex");
+    janelaLivro.hidden = false;
 }
-async function salvarLivro(evento){
-    evento.preventDefault();
-    const id = document.getElementById("livro-id").value;
-    const livro ={
-        titulo: document.getElementById("livro-titulo").value.trim(),autor: document.getElementById("livro-autor").value.trim(),status: document.getElementById("livro-status").value,total_paginas: Number(document.getElementById("livro-total-paginas").value),pagina_atual: Number(document.getElementById("livro-pagina-atual").value)
-    }
-    ;
-    if (livro.pagina_atual > livro.total_paginas || livro.pagina_atual < 0 || livro.total_paginas <= 0){
-        mensagemFormulario.textContent = "Verifique a quantidade de páginas.";
+
+function mostrarLivros() {
+    const pesquisa = campoPesquisa.value.trim().toLowerCase();
+    const filtrados = livros.filter(livro => {
+        const statusCerto = filtroAtual === "Todos" || livro.status === filtroAtual;
+        const tituloCerto = livro.titulo.toLowerCase().includes(pesquisa);
+        const autorCerto = livro.autor.toLowerCase().includes(pesquisa);
+        return statusCerto && (tituloCerto || autorCerto);
+    });
+
+    document.getElementById("quantidade-livros").textContent = `${filtrados.length} livro(s)`;
+    listaLivros.replaceChildren();
+
+    if (filtrados.length === 0) {
+        const aviso = document.createElement("p");
+        aviso.className = "estado-vazio";
+        aviso.textContent = "Nenhum livro encontrado.";
+        listaLivros.appendChild(aviso);
         return;
     }
-    try{
-        const resposta = await fetch(id ? `/api/livros/${id}` : "/api/livros",{
-            method:id ? "PUT" : "POST",headers:{
-                "Content-Type":"application/json"
-            }
-            ,body:JSON.stringify(livro)
+
+    filtrados.forEach(livro => {
+        const cartao = document.createElement("article");
+        cartao.className = "painel cartao-biblioteca";
+
+        const capa = document.createElement("div");
+        capa.className = "cartao-biblioteca-capa";
+        capa.appendChild(criarImagemLivro(livro));
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = livro.titulo;
+
+        const autor = document.createElement("p");
+        autor.className = "autor";
+        autor.textContent = livro.autor;
+
+        const situacao = document.createElement("div");
+        situacao.className = "situacao";
+        const etiqueta = document.createElement("span");
+        etiqueta.className = "selo-status";
+        if (livro.status === "Quero ler") etiqueta.classList.add("quero");
+        if (livro.status === "Lido") etiqueta.classList.add("lido");
+        etiqueta.textContent = livro.status;
+        situacao.appendChild(etiqueta);
+
+        const paginas = document.createElement("p");
+        paginas.className = "paginas";
+        paginas.textContent = `${livro.pagina_atual || 0} de ${livro.total_paginas} páginas`;
+
+        const botoes = document.createElement("div");
+        botoes.className = "botoes-livro";
+        const editar = document.createElement("button");
+        editar.className = "botao-suave";
+        editar.textContent = "Editar";
+        editar.type = "button";
+        editar.addEventListener("click", () => editarLivro(livro.id));
+
+        const excluir = document.createElement("button");
+        excluir.className = "botao-perigo";
+        excluir.textContent = "Excluir";
+        excluir.type = "button";
+        excluir.addEventListener("click", () => excluirLivro(livro.id));
+
+        botoes.append(editar, excluir);
+        cartao.append(capa, titulo, autor, situacao, criarBarra(porcentagemLivro(livro)), paginas, botoes);
+        listaLivros.appendChild(cartao);
+    });
+}
+
+async function carregarLivros() {
+    try {
+        const resposta = await fetch("/api/livros");
+        if (resposta.status === 401) {
+            window.location.href = "login.html";
+            return;
         }
-        );
-        if (!resposta.ok) throw new Error("Erro ao salvar livro");
+        if (!resposta.ok) throw new Error("Erro ao buscar livros");
+        livros = await resposta.json();
+        mostrarLivros();
+
+        const parametros = new URLSearchParams(window.location.search);
+        const editar = parametros.get("editar");
+        const adicionar = parametros.get("adicionar");
+        const busca = parametros.get("busca");
+
+        if (busca !== null) {
+            campoPesquisa.value = busca;
+            mostrarLivros();
+            campoPesquisa.focus();
+        }
+        if (editar) editarLivro(editar);
+        if (adicionar === "1") abrirFormulario();
+
+        if (editar || adicionar) {
+            window.history.replaceState({}, "", "biblioteca.html");
+        }
+    } catch (erro) {
+        console.error(erro);
+        listaLivros.innerHTML = '<p class="estado-vazio">Não foi possível carregar os livros.</p>';
+    }
+}
+
+async function salvarLivro(evento) {
+    evento.preventDefault();
+    const id = document.getElementById("livro-id").value;
+    const livro = {
+        titulo: document.getElementById("livro-titulo").value.trim(),
+        autor: document.getElementById("livro-autor").value.trim(),
+        status: document.getElementById("livro-status").value,
+        total_paginas: Number(document.getElementById("livro-total-paginas").value),
+        pagina_atual: Number(document.getElementById("livro-pagina-atual").value)
+    };
+
+    if (livro.total_paginas <= 0 || livro.pagina_atual < 0 || livro.pagina_atual > livro.total_paginas) {
+        mensagemFormulario.textContent = "A página atual precisa estar entre zero e o total de páginas.";
+        return;
+    }
+
+    try {
+        const resposta = await fetch(id ? `/api/livros/${id}` : "/api/livros", {
+            method: id ? "PUT" : "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(livro)
+        });
+        const dados = await resposta.json();
+
+        if (!resposta.ok) {
+            mensagemFormulario.textContent = dados.mensagem || "Erro ao salvar livro.";
+            return;
+        }
+
         fecharFormulario();
         await carregarLivros();
-    }
-    catch(erro){
+    } catch (erro) {
         console.error(erro);
         mensagemFormulario.textContent = "Não foi possível salvar o livro.";
     }
 }
-async function excluirLivro(id){
+
+async function excluirLivro(id) {
     if (!confirm("Deseja realmente excluir este livro?")) return;
-    try{
-        const resposta = await fetch(`/api/livros/${id}`,{
-            method:"DELETE"
-        }
-        );
+
+    try {
+        const resposta = await fetch(`/api/livros/${id}`, { method: "DELETE" });
         if (!resposta.ok) throw new Error("Erro ao excluir livro");
         await carregarLivros();
-    }
-    catch(erro){
+    } catch (erro) {
         console.error(erro);
         alert("Não foi possível excluir o livro.");
     }
 }
+
 document.getElementById("botao-adicionar").addEventListener("click", abrirFormulario);
 document.getElementById("botao-fechar").addEventListener("click", fecharFormulario);
 document.getElementById("botao-cancelar").addEventListener("click", fecharFormulario);
 formularioLivro.addEventListener("submit", salvarLivro);
-pesquisaLivros.addEventListener("input", mostrarLivros);
-document.querySelectorAll(".filtro").forEach(botao => botao.addEventListener("click", () =>{
-    filtroAtual = botao.dataset.status; document.querySelectorAll(".filtro").forEach(item =>{
-        item.classList.remove("bg-[#246B55]","text-white"); item.classList.add("bg-gray-100");
-    }
-    ); botao.classList.remove("bg-gray-100"); botao.classList.add("bg-[#246B55]","text-white"); mostrarLivros();
-}
-));
+campoPesquisa.addEventListener("input", mostrarLivros);
+
+janelaLivro.addEventListener("click", function(evento) {
+    if (evento.target === janelaLivro) fecharFormulario();
+});
+
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape" && !janelaLivro.hidden) fecharFormulario();
+});
+
+document.querySelectorAll(".filtro").forEach(botao => {
+    botao.addEventListener("click", function() {
+        filtroAtual = botao.dataset.status;
+        document.querySelectorAll(".filtro").forEach(item => item.classList.remove("ativo"));
+        botao.classList.add("ativo");
+        mostrarLivros();
+    });
+});
+
 carregarLivros();

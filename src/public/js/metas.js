@@ -1,129 +1,200 @@
 let metas = [];
 let livros = [];
-const listaMetas = document.getElementById("lista-metas");
+
 const janelaMeta = document.getElementById("janela-meta");
 const formularioMeta = document.getElementById("formulario-meta");
+const listaMetas = document.getElementById("lista-metas");
 const mensagemFormulario = document.getElementById("mensagem-formulario");
-async function carregarMetas(){
-    try{
-        const respostaMetas=await fetch("/api/metas");
-        if (respostaMetas.status===401){
-            window.location.href="login.html";
+
+function atualizarResumo() {
+    const ano = new Date().getFullYear();
+    const meta = metas.find(item => Number(item.ano) === ano);
+    const objetivo = meta ? Number(meta.quantidade_livros) : 0;
+    const lendo = livros.filter(livro => livro.status === "Lendo").length;
+    const quero = livros.filter(livro => livro.status === "Quero ler").length;
+    const lidos = livros.filter(livro => livro.status === "Lido").length;
+    const faltam = Math.max(0, objetivo - lidos);
+    const porcentagem = objetivo ? Math.min(100, Math.round(lidos * 100 / objetivo)) : 0;
+
+    document.getElementById("total-lidos").textContent = lidos;
+    document.getElementById("total-meta").textContent = objetivo;
+    document.getElementById("total-faltam").textContent = faltam;
+    document.getElementById("total-porcentagem").textContent = `${porcentagem}%`;
+    document.getElementById("quantidade-quero-ler").textContent = quero;
+    document.getElementById("quantidade-lendo").textContent = lendo;
+    document.getElementById("quantidade-lidos").textContent = lidos;
+    document.getElementById("ano-meta").textContent = `Meta de ${ano}`;
+    document.getElementById("texto-progresso").textContent = `${lidos} de ${objetivo} livros`;
+    document.getElementById("etiqueta-porcentagem").textContent = `${porcentagem}%`;
+    document.getElementById("barra-progresso").style.width = `${porcentagem}%`;
+
+    let mensagem = `Faltam ${faltam} livros para você alcançar sua meta.`;
+    if (!objetivo) mensagem = "Crie sua meta para acompanhar o progresso.";
+    if (objetivo && faltam === 0) mensagem = "Parabéns! Você alcançou sua meta.";
+    document.getElementById("mensagem-progresso").textContent = mensagem;
+
+    const grafico = document.getElementById("grafico-leituras");
+    grafico.replaceChildren();
+    const maior = Math.max(quero, lendo, lidos, 1);
+
+    [["Quero ler", quero], ["Lendo", lendo], ["Lidos", lidos]].forEach(item => {
+        const grupo = document.createElement("div");
+        grupo.className = "barra-grafico";
+        const contagem = document.createElement("strong");
+        contagem.textContent = item[1];
+        const coluna = document.createElement("div");
+        coluna.className = "coluna";
+        const preenchimento = document.createElement("div");
+        preenchimento.className = "preenchimento";
+        preenchimento.style.height = `${item[1] * 100 / maior}%`;
+        coluna.appendChild(preenchimento);
+        const nome = document.createElement("small");
+        nome.textContent = item[0];
+        grupo.append(contagem, coluna, nome);
+        grafico.appendChild(grupo);
+    });
+}
+
+function mostrarMetas() {
+    listaMetas.replaceChildren();
+
+    if (metas.length === 0) {
+        const aviso = document.createElement("p");
+        aviso.className = "estado-vazio";
+        aviso.textContent = "Nenhuma meta cadastrada.";
+        listaMetas.appendChild(aviso);
+        return;
+    }
+
+    metas.forEach(meta => {
+        const cartao = document.createElement("article");
+        cartao.className = "cartao-meta-lista";
+        const informacoes = document.createElement("div");
+        const ano = document.createElement("strong");
+        ano.textContent = `Meta de ${meta.ano}`;
+        const quantidade = document.createElement("p");
+        quantidade.textContent = `${meta.quantidade_livros} livros`;
+        informacoes.append(ano, quantidade);
+
+        const acoes = document.createElement("div");
+        acoes.className = "acoes-meta";
+        const editar = document.createElement("button");
+        editar.type = "button";
+        editar.className = "botao-suave";
+        editar.textContent = "Editar";
+        editar.addEventListener("click", () => editarMeta(meta.id));
+
+        const excluir = document.createElement("button");
+        excluir.type = "button";
+        excluir.className = "botao-perigo";
+        excluir.textContent = "Excluir";
+        excluir.addEventListener("click", () => excluirMeta(meta.id));
+
+        acoes.append(editar, excluir);
+        cartao.append(informacoes, acoes);
+        listaMetas.appendChild(cartao);
+    });
+}
+
+function abrirFormulario() {
+    formularioMeta.reset();
+    document.getElementById("meta-id").value = "";
+    document.getElementById("meta-ano").value = new Date().getFullYear();
+    document.getElementById("titulo-formulario").textContent = "Nova meta";
+    mensagemFormulario.textContent = "";
+    janelaMeta.hidden = false;
+}
+
+function fecharFormulario() {
+    janelaMeta.hidden = true;
+}
+
+function editarMeta(id) {
+    const meta = metas.find(item => Number(item.id) === Number(id));
+    if (!meta) return;
+
+    document.getElementById("meta-id").value = meta.id;
+    document.getElementById("meta-ano").value = meta.ano;
+    document.getElementById("meta-quantidade").value = meta.quantidade_livros;
+    document.getElementById("titulo-formulario").textContent = "Editar meta";
+    mensagemFormulario.textContent = "";
+    janelaMeta.hidden = false;
+}
+
+async function carregarMetas() {
+    try {
+        const resposta = await fetch("/api/metas");
+        if (resposta.status === 401) {
+            window.location.href = "login.html";
             return;
         }
-        const respostaLivros=await fetch("/api/livros");
-        if (!respostaMetas.ok||!respostaLivros.ok) throw new Error("Erro ao carregar dados");
-        metas=await respostaMetas.json();
-        livros=await respostaLivros.json();
+        const respostaLivros = await fetch("/api/livros");
+        if (!resposta.ok || !respostaLivros.ok) throw new Error("Erro ao carregar dados");
+
+        metas = await resposta.json();
+        livros = await respostaLivros.json();
         mostrarMetas();
         atualizarResumo();
-    }
-    catch(erro){
+    } catch (erro) {
         console.error(erro);
-        listaMetas.textContent="Não foi possível carregar as metas.";
+        listaMetas.innerHTML = '<p class="estado-vazio">Não foi possível carregar as metas.</p>';
     }
 }
-function atualizarResumo(){
-    const anoAtual=new Date().getFullYear();
-    const metaAtual=metas.find(meta=>Number(meta.ano)===anoAtual);
-    const quantidadeMeta=metaAtual?Number(metaAtual.quantidade_livros):0;
-    const lidos=livros.filter(l=>l.status==="Lido").length;
-    const lendo=livros.filter(l=>l.status==="Lendo").length;
-    const queroLer=livros.filter(l=>l.status==="Quero ler").length;
-    const faltam=Math.max(0,quantidadeMeta-lidos);
-    const porcentagem=quantidadeMeta?Math.min(100,Math.round(lidos/quantidadeMeta*100)):0;
-    document.getElementById("total-lidos").textContent=lidos;
-    document.getElementById("total-meta").textContent=quantidadeMeta;
-    document.getElementById("total-faltam").textContent=faltam;
-    document.getElementById("total-porcentagem").textContent=`${porcentagem}%`;
-    document.getElementById("quantidade-quero-ler").textContent=queroLer;
-    document.getElementById("quantidade-lendo").textContent=lendo;
-    document.getElementById("quantidade-lidos").textContent=lidos;
-    document.getElementById("ano-meta").textContent=`Meta de ${anoAtual}`;
-    document.getElementById("texto-progresso").textContent=`${lidos} / ${quantidadeMeta} livros`;
-    document.getElementById("barra-progresso").style.width=`${porcentagem}%`;
-    document.getElementById("mensagem-progresso").textContent=quantidadeMeta===0?"Nenhuma meta cadastrada para este ano.":faltam===0?"Parabéns! Você alcançou sua meta de leitura!":`Faltam ${faltam} livros para alcançar sua meta.`;
-}
-function mostrarMetas(){
-    listaMetas.innerHTML="";
-    if(!metas.length){
-        listaMetas.textContent="Nenhuma meta cadastrada.";
-        return;
-    }
-    metas.forEach(meta=>{
-        const cartao=document.createElement("div");cartao.className="border border-[#E7EAE5] rounded-xl p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4";const info=document.createElement("div");const ano=document.createElement("h3");ano.className="font-bold";ano.textContent=`Meta de ${meta.ano}`;const quantidade=document.createElement("p");quantidade.className="text-[#75837B] text-sm";quantidade.textContent=`${meta.quantidade_livros} livros`;info.append(ano,quantidade);const botoes=document.createElement("div");botoes.className="flex gap-2";const editar=document.createElement("button");editar.textContent="Editar";editar.className="bg-[#DDEDE4] text-[#246B55] px-4 py-2 rounded-lg";editar.onclick=()=>editarMeta(meta.id);const excluir=document.createElement("button");excluir.textContent="Excluir";excluir.className="bg-red-50 text-red-600 px-4 py-2 rounded-lg";excluir.onclick=()=>excluirMeta(meta.id);botoes.append(editar,excluir);cartao.append(info,botoes);listaMetas.appendChild(cartao);
-    }
-    );
-}
-function abrirFormulario(){
-    formularioMeta.reset();
-    document.getElementById("meta-id").value="";
-    document.getElementById("meta-ano").value=new Date().getFullYear();
-    document.getElementById("titulo-formulario").textContent="Nova meta";
-    mensagemFormulario.textContent="";
-    janelaMeta.classList.remove("hidden");
-    janelaMeta.classList.add("flex");
-}
-function fecharFormulario(){
-    janelaMeta.classList.add("hidden");
-    janelaMeta.classList.remove("flex");
-}
-function editarMeta(id){
-    const meta=metas.find(item=>Number(item.id)===Number(id));
-    if(!meta)return;
-    document.getElementById("meta-id").value=meta.id;
-    document.getElementById("meta-ano").value=meta.ano;
-    document.getElementById("meta-quantidade").value=meta.quantidade_livros;
-    document.getElementById("titulo-formulario").textContent="Editar meta";
-    mensagemFormulario.textContent="";
-    janelaMeta.classList.remove("hidden");
-    janelaMeta.classList.add("flex");
-}
-async function salvarMeta(evento){
+
+async function salvarMeta(evento) {
     evento.preventDefault();
-    const id=document.getElementById("meta-id").value;
-    const meta={
-        ano:Number(document.getElementById("meta-ano").value),quantidade_livros:Number(document.getElementById("meta-quantidade").value)
-    }
-    ;
-    if(meta.quantidade_livros<=0){
-        mensagemFormulario.textContent="Informe uma quantidade válida de livros.";
+    const id = document.getElementById("meta-id").value;
+    const meta = {
+        ano: Number(document.getElementById("meta-ano").value),
+        quantidade_livros: Number(document.getElementById("meta-quantidade").value)
+    };
+
+    if (!Number.isInteger(meta.ano) || meta.ano < 2020 || meta.ano > 2100 || meta.quantidade_livros <= 0) {
+        mensagemFormulario.textContent = "Informe um ano e uma quantidade válidos.";
         return;
     }
-    try{
-        const resposta=await fetch(id?`/api/metas/${id}`:"/api/metas",{
-            method:id?"PUT":"POST",headers:{
-                "Content-Type":"application/json"
-            }
-            ,body:JSON.stringify(meta)
+
+    try {
+        const resposta = await fetch(id ? `/api/metas/${id}` : "/api/metas", {
+            method: id ? "PUT" : "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(meta)
+        });
+        const dados = await resposta.json();
+        if (!resposta.ok) {
+            mensagemFormulario.textContent = dados.mensagem || "Erro ao salvar meta.";
+            return;
         }
-        );
-        if(!resposta.ok)throw new Error("Erro ao salvar meta");
         fecharFormulario();
         await carregarMetas();
-    }
-    catch(erro){
+    } catch (erro) {
         console.error(erro);
-        mensagemFormulario.textContent="Não foi possível salvar a meta.";
+        mensagemFormulario.textContent = "Não foi possível salvar a meta.";
     }
 }
-async function excluirMeta(id){
-    if(!confirm("Deseja realmente excluir esta meta?"))return;
-    try{
-        const resposta=await fetch(`/api/metas/${id}`,{
-            method:"DELETE"
-        }
-        );
-        if(!resposta.ok)throw new Error("Erro ao excluir meta");
+
+async function excluirMeta(id) {
+    if (!confirm("Deseja realmente excluir esta meta?")) return;
+    try {
+        const resposta = await fetch(`/api/metas/${id}`, { method: "DELETE" });
+        if (!resposta.ok) throw new Error("Erro ao excluir meta");
         await carregarMetas();
-    }
-    catch(erro){
+    } catch (erro) {
         console.error(erro);
         alert("Não foi possível excluir a meta.");
     }
 }
-document.getElementById("botao-adicionar-meta").addEventListener("click",abrirFormulario);
-document.getElementById("botao-fechar").addEventListener("click",fecharFormulario);
-document.getElementById("botao-cancelar").addEventListener("click",fecharFormulario);
-formularioMeta.addEventListener("submit",salvarMeta);
+
+document.getElementById("botao-adicionar-meta").addEventListener("click", abrirFormulario);
+document.getElementById("botao-fechar").addEventListener("click", fecharFormulario);
+document.getElementById("botao-cancelar").addEventListener("click", fecharFormulario);
+formularioMeta.addEventListener("submit", salvarMeta);
+janelaMeta.addEventListener("click", function(evento) {
+    if (evento.target === janelaMeta) fecharFormulario();
+});
+
+document.addEventListener("keydown", function(evento) {
+    if (evento.key === "Escape" && !janelaMeta.hidden) fecharFormulario();
+});
+
 carregarMetas();
