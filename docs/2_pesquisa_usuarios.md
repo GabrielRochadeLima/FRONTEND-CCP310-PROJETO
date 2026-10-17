@@ -1,63 +1,79 @@
 # Pesquisa e Coleta de Dados com Usuários
 
-> **_NOTE:_**: O objetivo desta entrega é planejar e registrar como a equipe vai ouvir os usuários reais (ou representativos do público-alvo) antes de avançar para personas e cenários. Não é para relatar impressões da equipe — é para descrever o que será perguntado, para quem, como e por quê.
-
-1) **Identificação de Necessidades dos Usuários e Requisitos de UX**
-- Que dados coletar? (comportamentos, dores, expectativas, contexto de uso, frequência de uso, nível de familiaridade com tecnologia, etc.)
-- De quem coletar? (perfil do público-alvo e critérios de seleção dos participantes — quantos, onde encontrá-los)
-
-2) **Aspectos Éticos**
-- Seu projeto deverá considerar aspectos éticos? Justifique usando os conceitos da aula.
-- Como o consentimento dos participantes será obtido (termo de consentimento)?
-- Como os dados coletados serão armazenados, anonimizados e descartados, considerando a LGPD?
-
-3) **Ferramentas de Coleta de Dados (três técnicas diferentes)**
-
-> **_NOTE:_**: Escolher técnicas complementares (ex.: uma qualitativa individual, uma qualitativa em grupo, uma quantitativa), não três variações da mesma técnica.
-
-Para cada instrumento, apresente:
-- Nome do instrumento e objetivo de aplicação
-- Explicar como aplicar (serve para normalizar o processo de aplicação quando pessoas distintas aplicam o instrumento)
-- Instrumento (por exemplo, link do questionário no Google Forms, roteiro de entrevista, roteiro do Grupo Focal, etc)
-
----
-
-## Exemplo de entrega (Gabriel preeencheu)
-
-
-### 1) Identificação de Necessidades dos Usuários e Requisitos de UX
+## 1. Identificação de Necessidades dos Usuários e Requisitos de UX
 
 **Que dados coletar?**
 
-- Como os usuários atualmente organizam e registram suas leituras;
-- Quais ferramentas utilizam para acompanhar os livros que estão lendo;
-- Com que frequência costumam ler;
-- Principais dificuldades para acompanhar o progresso das leituras;
-- Como os usuários escolhem novos livros;
-- Interesse em receber recomendações de livros;
-- Interesse em estabelecer e acompanhar metas de leitura;
-- Quais informações consideram importantes em uma plataforma de leitura.
+- Como os usuários organizam seus livros;
+- Frequência e hábitos de leitura;
+- Aplicativos que utilizam;
+- Dificuldades para acompanhar leituras;
+- Interesse em metas e recomendações;
+- Funcionalidades que gostariam de encontrar no LeituraJá.
 
 **De quem coletar?**
 
 - Pessoas que possuem o hábito de leitura;
-- Leitores que utilizam aplicativos ou plataformas para registrar seus livros;
-- Alunos de graduação de Ciência da Computação, do 2º ao 6º semestre, que tenham lido pelo menos um livro nos últimos 6 meses;
-- Amostra de 8 pessoas responderam o questionário;
+- Estudantes de Ciência da Computação, do 2º ao 6º semestre;
+- Pessoas que leram pelo menos um livro nos últimos 6 meses;
+- Usuários que utilizam ou têm interesse em aplicativos de leitura.
 
-### 2) Aspectos Éticos
+O questionário foi respondido por **8 participantes**, convidados por meio de grupos de estudantes.
 
-O projeto envolve a coleta de informações fornecidas pelos participantes durante entrevistas e questionários. Por isso:
+## 2. Aspectos Éticos
 
-- Será aplicado um **Termo de Consentimento Livre e Esclarecido (TCLE)** antes da coleta, explicando os objetivos da pesquisa, o uso dos dados e o direito de desistência a qualquer momento;
-- Os dados serão coletados de forma **anonimizada**, evitando a identificação dos participantes nas respostas utilizadas na análise;
-- As informações coletadas serão utilizadas exclusivamente para fins acadêmicos e para o desenvolvimento do projeto;
-- Os dados serão armazenados de forma segura e terão acesso restrito aos integrantes da equipe;
-- Caso sejam realizadas gravações de entrevistas, elas serão feitas somente mediante autorização dos participantes e serão excluídas ao final do projeto, mantendo-se apenas as informações anonimizadas necessárias para a análise.
+O projeto considera aspectos éticos, pois serão coletadas informações sobre os hábitos e opiniões dos participantes.
 
-### 3) Ferramentas de Coleta de Dados
+- A participação será voluntária, com consentimento dos usuários;
+- Os participantes serão informados sobre o objetivo da pesquisa;
+- As respostas serão utilizadas apenas para fins acadêmicos;
+- Os dados serão apresentados sem identificação dos participantes;
+- Os arquivos ficarão disponíveis apenas para a equipe e serão descartados após o término do projeto.
 
-| Instrumento | Objetivo | Como aplicar | Link/Roteiro |
-| :---- | :---- | :---- | :---- |
-| **Questionário (Google Forms)** | Coletar informações de uma quantidade maior de usuários sobre hábitos de leitura, ferramentas utilizadas e principais dificuldades. | Divulgar o questionário em grupos de turma e outros grupos de leitores. O questionário ficará disponível durante aproximadamente uma semana e terá tempo estimado de resposta de 5 minutos. | [Link do formulário.](https://docs.google.com/forms/d/1YZq_u5SuT5qG9Qaaka-ENiQ5BKnNBC2MFy716YqPo9k/edit) |
+Esses cuidados seguem os princípios de privacidade e proteção de dados da LGPD.
 
+## 3. Ferramentas de Coleta de Dados
+
+Foram escolhidas três técnicas para conhecer melhor os usuários.
+
+### 3.1 Questionário — Google Forms
+
+**Objetivo:** identificar hábitos de leitura, dificuldades e funcionalidades desejadas.
+
+**Como aplicar:** compartilhar o formulário com estudantes e leitores, solicitando respostas voluntárias.
+
+**Instrumento:** [Questionário no Google Forms](https://docs.google.com/forms/d/1YZq_u5SuT5qG9Qaaka-ENiQ5BKnNBC2MFy716YqPo9k/edit)
+
+**Resultado:** 8 respostas coletadas.
+
+### 3.2 Entrevista Individual
+
+**Objetivo:** entender melhor as dificuldades de cada usuário.
+
+**Como aplicar:** conversar individualmente com participantes do público-alvo, seguindo o roteiro e anotando as respostas.
+
+**Roteiro:**
+
+1. Como você organiza os livros que lê?
+2. Qual sua maior dificuldade para manter uma rotina de leitura?
+3. Você utiliza algum aplicativo para registrar suas leituras?
+4. O que gostaria de encontrar no LeituraJá?
+
+### 3.3 Grupo Focal
+
+**Objetivo:** discutir quais funcionalidades são mais importantes para os leitores.
+
+**Como aplicar:** reunir um pequeno grupo de leitores para conversar sobre a proposta do aplicativo. Um integrante conduz a conversa e outro anota as respostas.
+
+**Roteiro:**
+
+1. Quais dificuldades vocês encontram para organizar seus livros?
+2. O que acham dos aplicativos de leitura existentes?
+3. Acham importante acompanhar metas e progresso?
+4. Quais funcionalidades o LeituraJá deveria ter?
+
+## 4. Considerações Finais
+
+A pesquisa ajuda a entender as necessidades dos leitores e definir as funcionalidades do LeituraJá.
+
+O questionário foi aplicado a 8 participantes. A entrevista e o grupo focal foram preparados como técnicas complementares de pesquisa.
