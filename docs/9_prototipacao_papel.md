@@ -2,38 +2,44 @@
 
 ## 1. Desenvolvimento dos Protótipos
 
-Foram desenhadas duas versões da página inicial da plataforma de leitura, uma para computador e outra para celular.
+Os protótipos foram desenhados por **Matheus**, integrante do grupo, utilizando papel e lápis.
 
-O objetivo foi organizar as principais informações e verificar como a interface ficaria em diferentes tamanhos de tela.
+Foram criadas três páginas: **Início, Biblioteca e Metas**, nas versões para computador e celular. O objetivo foi organizar as informações e definir a navegação da plataforma.
 
 ## 2. Telas e Funcionalidades
 
-Os protótipos apresentam:
+- **Início:** apresenta o resumo dos livros, leituras em andamento e metas.
+- **Biblioteca:** permite visualizar, pesquisar e organizar os livros entre quero ler, lendo e lido.
+- **Metas:** apresenta os objetivos de leitura, o progresso e a opção de criar novas metas.
 
-- **Página inicial:** boas-vindas e acesso às principais áreas.
-- **Biblioteca:** resumo da quantidade de livros cadastrados.
-- **Leituras:** quantidade de livros lidos, em andamento e que o usuário deseja ler.
-- **Metas:** acompanhamento dos objetivos de leitura.
-- **Navegação:** menu adaptado para computador e celular.
+## 3. Imagens dos Protótipos
 
-## 3. Imagem dos Protótipos
+### 3.1 Página Inicial
 
-A imagem abaixo apresenta os esboços da página inicial nas versões para computador e celular.
+Apresenta as principais informações e o acesso às funcionalidades da plataforma.
 
-<img width="1100" height="1600" alt="Protótipos em papel para computador e celular" src="https://github.com/user-attachments/assets/b08f18af-f3f2-4b1c-9677-df7ed9696a04" />
+<img width="1100" height="1600" alt="Protótipo da página inicial para computador e celular" src="https://github.com/user-attachments/assets/b08f18af-f3f2-4b1c-9677-df7ed9696a04" />
+
+### 3.2 Minha Biblioteca
+
+Apresenta os livros cadastrados, com opções de pesquisa e organização.
+
+<img width="1144" height="1600" alt="Protótipo da biblioteca para computador e celular" src="https://github.com/user-attachments/assets/79635425-f56e-4f7d-8053-92775679539b" />
+
+### 3.3 Metas
+
+Mostra as metas de leitura, a quantidade de livros concluídos e o progresso dos objetivos.
+
+<img width="1128" height="1600" alt="Protótipo da página de metas para computador e celular" src="https://github.com/user-attachments/assets/86598c6b-07c3-4644-9102-6edbcee0edb0" />
 
 ## 4. Feedbacks
 
-Exemplos de feedbacks para validar com os participantes:
+Abaixo estão dois feedbacks elaborados para representar uma avaliação dos protótipos.
 
-**Participante 1:** A página inicial está organizada, mas o botão de adicionar livros poderia ter mais destaque.
+**Participante 1:** Gostei da organização das páginas, principalmente da biblioteca, porque fica fácil separar os livros por situação de leitura. A navegação também parece simples.
 
-**Participante 2:** A versão para computador apresenta bem as informações. Seria interessante destacar os livros em andamento.
+**Participante 2:** Achei a versão para celular bem organizada. A página de metas ficou fácil de entender, principalmente por mostrar o progresso das leituras.
 
-**Participante 3:** A versão para celular ficou simples, mas os indicadores poderiam ocupar menos espaço.
+## 5. Considerações Finais
 
-**Participante 4:** A área de metas é fácil de entender. Mostrar a porcentagem de conclusão ajudaria no acompanhamento.
-
-## 5. Considerações finais
-
-Os protótipos ajudaram a visualizar a organização da página inicial e sua adaptação para computador e celular. Eles servirão como referência para o desenvolvimento das próximas telas.
+Os protótipos desenvolvidos por Matheus ajudaram a definir a estrutura das três páginas principais para computador e celular. Os feedbacks apresentados são positivos e destacam a organização e a facilidade de navegação.
