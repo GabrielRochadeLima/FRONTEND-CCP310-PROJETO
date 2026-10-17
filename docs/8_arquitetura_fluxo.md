@@ -2,11 +2,11 @@
 
 ## 1. Arquitetura de Informação
 
-A plataforma foi organizada para que o usuário consiga encontrar seus livros, acompanhar leituras e consultar metas de forma simples.
+O LeituraJá foi organizado para que o usuário consiga encontrar seus livros, acompanhar suas leituras e consultar suas metas de forma simples.
 
 ```mermaid
 flowchart TD
-    A["Plataforma de Leitura"]
+    A["LeituraJá"]
     A --> B["Início"]
     A --> C["Minha Biblioteca"]
     A --> D["Pesquisar Livros"]
@@ -21,7 +21,7 @@ flowchart TD
 
 ### 2.1 Cadastrar livro
 
-O usuário pesquisa um título e adiciona à biblioteca.
+O usuário pesquisa um título e adiciona o livro à biblioteca.
 
 ```mermaid
 flowchart LR
@@ -34,13 +34,15 @@ flowchart LR
 
 ### 2.2 Organizar biblioteca
 
-O usuário seleciona um livro e altera sua situação de leitura.
+O usuário seleciona um livro e altera sua situação de leitura. Se o livro não estiver na biblioteca, deverá adicioná-lo primeiro.
 
 ```mermaid
 flowchart LR
     A["Biblioteca"] --> B{"Livro disponível?"}
     B -->|Sim| C["Alterar situação"]
     B -->|Não| D["Pesquisar livro"]
+    D --> F["Adicionar à biblioteca"]
+    F --> C
     C --> E([Salvar])
 ```
 
@@ -58,16 +60,18 @@ flowchart LR
 
 ### 2.4 Consultar metas
 
-O usuário acessa suas metas para verificar o progresso.
+O usuário acessa suas metas para verificar seu progresso. Caso não tenha uma meta cadastrada, poderá criar uma.
 
 ```mermaid
 flowchart LR
     A["Metas"] --> B{"Existe meta?"}
     B -->|Sim| C["Ver progresso"]
     B -->|Não| D["Criar meta"]
-    D --> C
+    D --> E["Salvar meta"]
+    E --> C
+    C --> F([Concluído])
 ```
 
-## 3. Considerações finais
+## 3. Considerações Finais
 
-Os fluxos mostram como o usuário poderá realizar as principais tarefas da plataforma. A ideia é manter uma navegação simples, com poucas etapas e acesso rápido às funcionalidades.
+Os fluxos mostram as principais tarefas que o usuário poderá realizar no LeituraJá. A ideia é manter uma navegação simples, com poucas etapas e acesso rápido às funcionalidades.
