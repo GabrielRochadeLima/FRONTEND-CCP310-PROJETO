@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Metas | LeituraJá
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="css/estilo.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="cabecalho-site">
+   <div class="cabecalho-conteudo">
+    <a class="marca" href="index.html">
+     Leitura
+     <span>
+      Já
+     </span>
+    </a>
+    <nav aria-label="Navegação principal" class="navegacao-desktop">
+     <a href="index.html">
+      Início
+     </a>
+     <a href="biblioteca.html">
+      Biblioteca
+     </a>
+     <a class="ativo" href="metas.html">
+      Metas
+     </a>
+    </nav>
+    <div class="perfil-area">
+     <button aria-controls="menu-perfil" aria-expanded="false" aria-label="Abrir opções da conta" class="botao-perfil" id="botao-perfil" type="button">
+      <svg aria-hidden="true" fill="none" height="21" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="21">
+       <circle cx="12" cy="8" r="4">
+       </circle>
+       <path d="M4 21a8 8 0 0 1 16 0">
+       </path>
+      </svg>
+      <span class="nome-usuario" id="nome-usuario">
+       Minha conta
+      </span>
+      <span aria-hidden="true">
+       ⌄
+      </span>
+     </button>
+     <div class="menu-perfil hidden" id="menu-perfil">
+      <p class="email-usuario" id="email-usuario">
+      </p>
+      <button id="botao-sair" type="button">
+       Sair da conta
+      </button>
+     </div>
+    </div>
+   </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-7 md:py-10">
+   <section class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-7">
+    <div>
+     <h1 class="text-3xl font-extrabold mb-2">
+      Minhas Metas
+     </h1>
+     <p class="text-[#75837B]">
+      Acompanhe cada conquista na sua leitura.
+     </p>
+    </div>
+    <button class="bg-[#246B55] text-white rounded-xl px-5 py-3 font-bold cursor-pointer" id="botao-adicionar-meta">
+     + Nova meta
+    </button>
+   </section>
+   <section class="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4 mb-7">
+    <div class="cartao p-5">
+     <p class="text-[#75837B] text-sm">
+      Livros lidos
+     </p>
+     <h2 class="text-3xl font-extrabold mt-2" id="total-lidos">
+      0
+     </h2>
+    </div>
+    <div class="cartao p-5">
+     <p class="text-[#75837B] text-sm">
+      Meta anual
+     </p>
+     <h2 class="text-3xl font-extrabold mt-2" id="total-meta">
+      0
+     </h2>
+    </div>
+    <div class="cartao p-5">
+     <p class="text-[#75837B] text-sm">
+      Faltam
+     </p>
+     <h2 class="text-3xl font-extrabold mt-2" id="total-faltam">
+      0
+     </h2>
+    </div>
+    <div class="cartao p-5">
+     <p class="text-[#75837B] text-sm">
+      Progresso
+     </p>
+     <h2 class="text-3xl font-extrabold mt-2" id="total-porcentagem">
+      0%
+     </h2>
+    </div>
+   </section>
+   <section class="grid grid-cols-1 lg:grid-cols-2 gap-5 mb-7">
+    <div class="cartao p-6">
+     <h2 class="text-xl font-extrabold mb-6">
+      Meta anual
+     </h2>
+     <div class="flex justify-between gap-3 mb-3">
+      <span class="text-[#75837B]" id="ano-meta">
+       Ano atual
+      </span>
+      <strong id="texto-progresso">
+       0 / 0 livros
+      </strong>
+     </div>
+     <div class="w-full h-4 rounded-full bg-[#DDEDE4] overflow-hidden">
+      <div class="h-full bg-[#246B55] rounded-full" id="barra-progresso" style="width:0%">
+      </div>
+     </div>
+     <p class="text-[#75837B] text-sm mt-5" id="mensagem-progresso">
+      Nenhuma meta cadastrada.
+     </p>
+    </div>
+    <div class="cartao p-6">
+     <h2 class="text-xl font-extrabold mb-5">
+      Resumo das leituras
+     </h2>
+     <div class="space-y-5">
+      <div class="flex justify-between">
+       <span>
+        Quero ler
+       </span>
+       <strong id="quantidade-quero-ler">
+        0
+       </strong>
+      </div>
+      <div class="flex justify-between">
+       <span>
+        Lendo
+       </span>
+       <strong id="quantidade-lendo">
+        0
+       </strong>
+      </div>
+      <div class="flex justify-between">
+       <span>
+        Lidos
+       </span>
+       <strong id="quantidade-lidos">
+        0
+       </strong>
+      </div>
+     </div>
+    </div>
+   </section>
+   <section class="cartao p-6">
+    <h2 class="text-xl font-extrabold mb-4">
+     Minhas metas cadastradas
+    </h2>
+    <div class="space-y-4" id="lista-metas">
+     Carregando metas...
+    </div>
+   </section>
+   <div class="hidden fixed inset-0 z-50 bg-black/50 items-center justify-center p-4" id="janela-meta">
+    <div class="bg-white rounded-2xl p-6 w-full max-w-md">
+     <div class="flex justify-between items-center mb-5">
+      <h2 class="text-xl font-extrabold" id="titulo-formulario">
+       Nova meta
+      </h2>
+      <button aria-label="Fechar" class="text-2xl" id="botao-fechar" type="button">
+       ×
+      </button>
+     </div>
+     <form class="space-y-4" id="formulario-meta">
+      <input id="meta-id" type="hidden"/>
+      <label class="block text-sm font-semibold">
+       Ano
+       <input class="block mt-2 w-full rounded-lg border border-[#E7EAE5] p-3" id="meta-ano" max="2100" min="2020" required="" type="number"/>
+      </label>
+      <label class="block text-sm font-semibold">
+       Quantidade de livros
+       <input class="block mt-2 w-full rounded-lg border border-[#E7EAE5] p-3" id="meta-quantidade" min="1" required="" type="number"/>
+      </label>
+      <p class="text-red-600 text-sm" id="mensagem-formulario" role="alert">
+      </p>
+      <div class="flex justify-end gap-3">
+       <button class="rounded-lg bg-gray-100 px-5 py-3" id="botao-cancelar" type="button">
+        Cancelar
+       </button>
+       <button class="rounded-lg bg-[#246B55] text-white px-5 py-3 font-bold" type="submit">
+        Salvar meta
+       </button>
+      </div>
+     </form>
+    </div>
+   </div>
+  </main>
+  <script src="js/metas.js">
+  </script>
+  <nav aria-label="Navegação no celular" class="navegacao-movel">
+   <a href="index.html">
+    <svg aria-hidden="true" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23">
+     <path d="m3 10 9-7 9 7v11h-7v-7h-4v7H3z">
+     </path>
+    </svg>
+    <span>
+     Início
+    </span>
+   </a>
+   <a href="biblioteca.html">
+    <svg aria-hidden="true" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23">
+     <path d="M12 7v14">
+     </path>
+     <path d="M3 18V5a2 2 0 0 1 2-2h4a3 3 0 0 1 3 3 3 3 0 0 1 3-3h4a2 2 0 0 1 2 2v13h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3H3Z">
+     </path>
+    </svg>
+    <span>
+     Biblioteca
+    </span>
+   </a>
+   <a class="ativo" href="metas.html">
+    <svg aria-hidden="true" fill="none" height="23" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="23">
+     <circle cx="12" cy="12" r="9">
+     </circle>
+     <circle cx="12" cy="12" r="5">
+     </circle>
+     <circle cx="12" cy="12" r="1">
+     </circle>
+    </svg>
+    <span>
+     Metas
+    </span>
+   </a>
+  </nav>
+  <script src="js/perfil.js">
+  </script>
+ </body>
+</html>

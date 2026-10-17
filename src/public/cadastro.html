@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Cadastro | LeituraJá
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="css/estilo.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="cabecalho-site">
+   <div class="cabecalho-conteudo cabecalho-publico">
+    <a class="marca" href="login.html">
+     Leitura
+     <span>
+      Já
+     </span>
+    </a>
+   </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-7 md:py-10">
+   <div class="cartao max-w-xl mx-auto p-6 sm:p-10">
+    <h1 class="text-3xl font-extrabold mb-2">
+     Criar conta
+    </h1>
+    <p class="text-[#75837B] mb-8">
+     Comece sua jornada de leitura.
+    </p>
+    <form class="space-y-5" id="formulario-cadastro">
+     <label class="block text-sm font-semibold">
+      Nome
+      <input autocomplete="name" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="nome" required="" type="text"/>
+     </label>
+     <label class="block text-sm font-semibold">
+      E-mail
+      <input autocomplete="email" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="email" required="" type="email"/>
+     </label>
+     <label class="block text-sm font-semibold">
+      Senha
+      <input autocomplete="new-password" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="senha" minlength="8" required="" type="password"/>
+     </label>
+     <label class="block text-sm font-semibold">
+      Confirmar senha
+      <input autocomplete="new-password" class="block mt-2 w-full border border-[#E7EAE5] rounded-xl p-3" id="confirmar-senha" minlength="8" required="" type="password"/>
+     </label>
+     <p class="text-red-600 text-sm" id="mensagem-cadastro" role="alert">
+     </p>
+     <button class="w-full bg-[#246B55] text-white font-bold rounded-xl py-3" type="submit">
+      Criar conta
+     </button>
+    </form>
+    <p class="text-center text-sm text-[#75837B] mt-6">
+     Já tem conta?
+     <a class="text-[#246B55] font-bold" href="login.html">
+      Entrar
+     </a>
+    </p>
+   </div>
+  </main>
+  <script src="js/cadastro.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Login | LeituraJá
+  </title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="css/estilo.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header class="cabecalho-site">
+   <div class="cabecalho-conteudo cabecalho-publico">
+    <a class="marca" href="login.html">
+     Leitura
+     <span>
+      Já
+     </span>
+    </a>
+   </div>
+  </header>
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 py-7 md:py-10">
+   <div class="cartao overflow-hidden grid md:grid-cols-2 min-h-[570px]">
+    <div class="hidden md:flex bg-[#DDEDE4] p-12 flex-col justify-center items-center text-center">
+     <div class="text-7xl mb-6">
+      <svg aria-label="Ilustração de livros empilhados" height="180" role="img" viewbox="0 0 220 180" width="220" xmlns="http://www.w3.org/2000/svg">
+       <ellipse cx="110" cy="163" fill="#183F34" opacity=".08" rx="96" ry="9">
+       </ellipse>
+       <g transform="translate(16 31)">
+        <rect fill="#F9FAF7" height="29" rx="7" stroke="#698A78" stroke-width="2" width="170" x="12" y="101">
+        </rect>
+        <path d="M24 105v21" stroke="#A6C4B1" stroke-width="5">
+        </path>
+        <rect fill="#D28C34" height="30" rx="7" width="181" x="0" y="68">
+        </rect>
+        <path d="M16 70v25" stroke="#FCDFAC" stroke-width="6">
+        </path>
+        <rect fill="#246B55" height="29" rx="6" width="150" x="28" y="36">
+        </rect>
+        <path d="M42 39v23" stroke="#A4C8B1" stroke-width="5">
+        </path>
+        <rect fill="#3B7EAE" height="28" rx="6" width="166" x="13" y="5">
+        </rect>
+        <path d="M29 8v22" stroke="#9BC4DD" stroke-width="5">
+        </path>
+       </g>
+      </svg>
+     </div>
+     <h1 class="text-3xl font-extrabold text-[#183F34] mb-4">
+      Sua próxima leitura começa aqui.
+     </h1>
+     <p class="text-[#246B55]">
+      Organize seus livros e acompanhe suas metas no LeituraJá.
+     </p>
+    </div>
+    <div class="p-6 sm:p-10 md:p-12 flex flex-col justify-center">
+     <h1 class="text-3xl font-extrabold mb-2">
+      Bem-vindo de volta!
+     </h1>
+     <p class="text-[#75837B] mb-8">
+      Entre para continuar sua leitura.
+     </p>
+     <form class="space-y-5" id="formulario-login">
+      <label class="block text-sm font-semibold">
+       E-mail
+       <input autocomplete="email" class="block w-full mt-2 border border-[#E7EAE5] rounded-xl px-4 py-3" id="email" required="" type="email"/>
+      </label>
+      <label class="block text-sm font-semibold">
+       Senha
+       <input autocomplete="current-password" class="block w-full mt-2 border border-[#E7EAE5] rounded-xl px-4 py-3" id="senha" required="" type="password"/>
+      </label>
+      <p class="text-red-600 text-sm" id="mensagem-login" role="alert">
+      </p>
+      <button class="w-full bg-[#246B55] text-white py-3 rounded-xl font-bold" type="submit">
+       Entrar
+      </button>
+     </form>
+     <p class="text-center text-sm text-[#75837B] mt-8">
+      Ainda não tem conta?
+      <a class="text-[#246B55] font-bold" href="cadastro.html">
+       Cadastre-se
+      </a>
+     </p>
+    </div>
+   </div>
+  </main>
+  <script src="js/login.js">
+  </script>
+ </body>
+</html>

@@ -1,0 +1,21 @@
+{
+    "name": "leituraja",
+    "version": "1.0.0",
+    "private": true,
+    "main": "servidor.js",
+    "type": "commonjs",
+    "scripts": {
+        "start": "node servidor.js",
+        "dev": "node servidor.js",
+        "css": "tailwindcss -i ./public/css/entrada.css -o ./public/css/estilo.css --watch",
+        "css:build": "tailwindcss -i ./public/css/entrada.css -o ./public/css/estilo.css --minify"
+    },
+    "dependencies": {
+        "express": "^5.3.0",
+        "pg": "^8.16.3"
+    },
+    "devDependencies": {
+        "@tailwindcss/cli": "^4.3.3",
+        "tailwindcss": "^4.3.3"
+    }
+}
