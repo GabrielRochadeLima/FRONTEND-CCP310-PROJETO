@@ -6,7 +6,7 @@ Este projeto é desenvolvido pelos seguintes alunos:
 
 - Gabriel Rocha de Lima
 - Matheus Felix Nogueira
-- Igor Marques Pieralini
+- Igor Marques Pieralini - 22.225.027-6
 
 ## Conhecendo o problema
 
