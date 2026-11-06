@@ -4,7 +4,7 @@ const crypto = require("crypto");
 const banco = require("./banco");
 
 const app = express();
-const porta = 3000;
+const porta = Number(process.env.PORT) || 3000;
 const sessoes = new Map();
 
 app.use(express.json());
@@ -55,25 +55,7 @@ function validarMeta(meta) {
         Number.isInteger(meta.quantidade_livros) && meta.quantidade_livros > 0;
 }
 
-app.get("/", (requisicao, resposta) => {
-    resposta.redirect(obterUsuario(requisicao).usuarioId ? "/index.html" : "/login.html");
-});
-
-for (const pagina of ["index.html", "biblioteca.html", "metas.html"]) {
-    app.get(`/${pagina}`, (requisicao, resposta) => {
-        if (!obterUsuario(requisicao).usuarioId) return resposta.redirect("/login.html");
-        resposta.sendFile(path.join(__dirname, "public", pagina));
-    });
-}
-
-for (const pagina of ["login.html", "cadastro.html"]) {
-    app.get(`/${pagina}`, (requisicao, resposta) => {
-        if (obterUsuario(requisicao).usuarioId) return resposta.redirect("/index.html");
-        resposta.sendFile(path.join(__dirname, "public", pagina));
-    });
-}
-
-app.use(express.static(path.join(__dirname, "public"), { index: false, dotfiles: "deny" }));
+app.use(express.static(path.join(__dirname, "dist")));
 
 app.get("/api/status", (requisicao, resposta) => {
     resposta.json({ mensagem: "LeituraJá funcionando!" });
@@ -265,6 +247,10 @@ app.delete("/api/metas/:id", verificarLogin, async (requisicao, resposta) => {
         console.error(erro);
         resposta.status(500).json({ mensagem: "Erro ao excluir meta." });
     }
+});
+
+app.get("/{*caminho}", (requisicao, resposta) => {
+    resposta.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
 app.listen(porta, "0.0.0.0", () => {

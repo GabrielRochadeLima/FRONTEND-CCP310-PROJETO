@@ -1,21 +1,26 @@
 {
-    "name": "leituraja",
-    "version": "1.0.0",
-    "private": true,
-    "main": "servidor.js",
-    "type": "commonjs",
-    "scripts": {
-        "start": "node servidor.js",
-        "dev": "node servidor.js",
-        "css": "tailwindcss -i ./public/css/entrada.css -o ./public/css/estilo.css --watch",
-        "css:build": "tailwindcss -i ./public/css/entrada.css -o ./public/css/estilo.css --minify"
-    },
-    "dependencies": {
-        "express": "^5.3.0",
-        "pg": "^8.16.3"
-    },
-    "devDependencies": {
-        "@tailwindcss/cli": "^4.3.3",
-        "tailwindcss": "^4.3.3"
-    }
+  "name": "leituraja",
+  "version": "2.0.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:api\" \"npm run dev:react\"",
+    "dev:api": "node servidor.js",
+    "dev:react": "vite --host",
+    "build": "vite build",
+    "start": "node servidor.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "pg": "^8.16.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "concurrently": "^9.2.0",
+    "tailwindcss": "^4.1.0",
+    "vite": "^7.1.0"
+  }
 }

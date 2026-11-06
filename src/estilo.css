@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+body {
+    font-family: "DM Sans", Arial, sans-serif;
+    background: #faf9f6;
+    color: #25362f;
+}
+
+button, a { cursor: pointer; }
+input, select { outline: none; }
+input:focus, select:focus { border-color: #246b55; }

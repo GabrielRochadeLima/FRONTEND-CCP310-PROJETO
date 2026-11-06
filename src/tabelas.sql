@@ -1,11 +1,11 @@
-CREATE TABLE usuarios (
+CREATE TABLE IF NOT EXISTS usuarios (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(150) UNIQUE NOT NULL,
     senha VARCHAR(200) NOT NULL
 );
 
-CREATE TABLE livros (
+CREATE TABLE IF NOT EXISTS livros (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER REFERENCES usuarios(id),
     titulo VARCHAR(200) NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE livros (
     pagina_atual INTEGER DEFAULT 0
 );
 
-CREATE TABLE metas (
+CREATE TABLE IF NOT EXISTS metas (
     id SERIAL PRIMARY KEY,
     usuario_id INTEGER REFERENCES usuarios(id),
     ano INTEGER NOT NULL,
