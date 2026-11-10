@@ -5,7 +5,7 @@ Projeto apresentado ao Centro Universitário [FEI](https://portal.fei.edu.br/), 
 Este projeto é desenvolvido pelos seguintes alunos:
 
 - Gabriel Rocha de Lima
-- Matheus Felix Nogueira
+- Matheus Felix Nogueira - 22.125.057-4
 - Igor Marques Pieralini - 22.225.027-6
 
 ## Conhecendo o problema
