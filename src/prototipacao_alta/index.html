@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LeituraJá - Prototipação de Alta Fidelidade</title>
+
+    <!-- Fonte DM Sans (com fallback offline para fontes de sistema) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Folha de Estilos Local Consolidada -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="app-container">
+
+        <!-- ================================================================
+             CABEÇALHO GLOBAL
+             ================================================================ -->
+        <header id="app-header" class="app-header">
+            <div class="header-container">
+
+                <!-- Logo da Marca -->
+                <a href="#inicio" id="header-logo-link" class="header-logo">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6c-2.5-1.8-5.7-2-9-1v14c3.3-1 6.5-.8 9 1 2.5-1.8 5.7-2 9-1V5c-3.3-1-6.5-.8-9 1Z"/>
+                        <path d="M12 6v14"/>
+                    </svg>
+                    <span class="header-logo-text">LeituraJá</span>
+                </a>
+
+                <!-- Navegação Desktop -->
+                <nav class="header-nav">
+                    <button type="button" class="nav-link active" data-view="inicio">Início</button>
+                    <button type="button" class="nav-link" data-view="biblioteca">Minha Biblioteca</button>
+                    <button type="button" class="nav-link" data-view="metas">Metas</button>
+                </nav>
+
+                <!-- Ações do Header (Busca rápida e Perfil) -->
+                <div class="header-actions">
+                    <form id="header-search-form" class="header-search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                            <circle cx="10" cy="10" r="7"/>
+                            <path d="m15 15 6 6"/>
+                        </svg>
+                        <input type="search" id="header-search-input" placeholder="Buscar livros...">
+                    </form>
+
+                    <!-- Botão do Perfil / Usuário -->
+                    <div style="position: relative;">
+                        <button type="button" id="user-profile-btn" class="user-btn" title="Perfil do usuário">
+                            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 21c0-5 3-8 8-8s8 3 8 8"/>
+                            </svg>
+                        </button>
+
+                        <!-- Menu Dropdown do Usuário -->
+                        <div id="user-menu-dropdown" class="user-menu">
+                            <div class="user-menu-info">
+                                <p id="user-name-display" class="user-menu-name">Gabriel Lima</p>
+                                <p id="user-email-display" class="user-menu-email">gabriel@fei.edu.br</p>
+                            </div>
+                            <button type="button" class="user-menu-item" onclick="navigateTo('biblioteca')">
+                                <span>📚</span> Minha Biblioteca
+                            </button>
+                            <button type="button" class="user-menu-item" onclick="navigateTo('metas')">
+                                <span>🎯</span> Minhas Metas
+                            </button>
+                            <button type="button" id="btn-logout" class="user-menu-item danger">
+                                <span>🚪</span> Sair da Conta
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </header>
+
+        <!-- ================================================================
+             TELA 1: INÍCIO (DASHBOARD)
+             ================================================================ -->
+        <main id="view-inicio" class="view-section main-content active">
+
+            <!-- Card de Boas-Vindas com Ilustração -->
+            <section class="welcome-card">
+                <div class="welcome-info">
+                    <p class="welcome-badge">ORGANIZE · ACOMPANHE · LEIA MAIS</p>
+                    <h1 id="home-welcome-title" class="welcome-title">Bem-vindo de volta!</h1>
+                    <p class="welcome-subtitle">Organize seus livros, acompanhe suas leituras e avance nas suas metas.</p>
+                    <div class="welcome-action">
+                        <button type="button" class="btn-primary" onclick="openBookModal()">
+                            <span style="font-size: 18px; line-height: 1;">+</span> Adicionar livro
+                        </button>
+                    </div>
+                </div>
+                <div class="welcome-art">
+                    <img src="assets/ilustracao-livros.svg" alt="Ilustração LeituraJá de livros e plantas">
+                </div>
+            </section>
+
+            <!-- Cards com Indicadores Numéricos -->
+            <section class="metrics-grid">
+                <div class="metric-card library" onclick="navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="4" height="16" rx="1"/>
+                        <rect x="9" y="4" width="4" height="16" rx="1"/>
+                        <path d="M16 5l4-1 2 15-4 1-2-15Z"/>
+                    </svg>
+                    <div>
+                        <p id="metric-library-count" class="metric-value">0</p>
+                        <p class="metric-label">Na biblioteca</p>
+                    </div>
+                </div>
+
+                <div class="metric-card reading" onclick="libraryState.filter='Lendo'; navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3B7EAE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/>
+                        <path d="M12 6v14"/>
+                    </svg>
+                    <div>
+                        <p id="metric-reading-count" class="metric-value">0</p>
+                        <p class="metric-label">Lendo</p>
+                    </div>
+                </div>
+
+                <div class="metric-card want" onclick="libraryState.filter='Quero ler'; navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D28C34" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 7v5l4 2"/>
+                    </svg>
+                    <div>
+                        <p id="metric-want-count" class="metric-value">0</p>
+                        <p class="metric-label">Quero ler</p>
+                    </div>
+                </div>
+
+                <div class="metric-card read" onclick="libraryState.filter='Lido'; navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#BC5D64" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M7 12l3 3 6-6"/>
+                    </svg>
+                    <div>
+                        <p id="metric-read-count" class="metric-value">0</p>
+                        <p class="metric-label">Lidos</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Layout Principal: Leituras em Andamento + Barra Lateral -->
+            <div class="home-columns">
+
+                <!-- Coluna da Esquerda: Leituras em Andamento -->
+                <section>
+                    <div class="section-header">
+                        <h2 class="section-title">Leituras em andamento</h2>
+                        <span class="section-link" onclick="navigateTo('biblioteca')">Ver todos →</span>
+                    </div>
+
+                    <div id="home-reading-grid" class="reading-now-grid">
+                        <!-- Gerado dinamicamente via app.js -->
+                    </div>
+                </section>
+
+                <!-- Coluna da Direita: Meta do Ano e Próximo Livro -->
+                <aside class="home-aside">
+
+                    <!-- Meta de Leitura Resumo -->
+                    <div class="aside-card">
+                        <div class="aside-title-row">
+                            <h2 class="aside-card-title">Meta de leitura</h2>
+                            <span class="section-link" onclick="navigateTo('metas')">Editar metas</span>
+                        </div>
+                        <p class="aside-card-subtitle">Seu progresso de leitura neste ano</p>
+
+                        <div style="margin-top: 24px;">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <p id="home-goal-text" style="font-size: 22px; font-weight: 700;">0 de 0 livros</p>
+                                <span id="home-goal-pct" style="color: var(--primary); font-weight: 700; font-size: 14px;">0%</span>
+                            </div>
+                            <div class="progress-bar-bg" style="height: 9px; margin-top: 12px;">
+                                <div id="home-goal-progress" class="progress-bar-fill" style="width: 0%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Próximos da Sua Lista -->
+                    <div class="aside-card">
+                        <h2 class="aside-card-title">Próximos da sua lista</h2>
+                        <div id="home-next-book">
+                            <!-- Gerado dinamicamente via app.js -->
+                        </div>
+                    </div>
+
+                </aside>
+
+            </div>
+
+        </main>
+
+        <!-- ================================================================
+             TELA 2: MINHA BIBLIOTECA
+             ================================================================ -->
+        <main id="view-biblioteca" class="view-section main-content">
+
+            <div>
+                <h1 class="page-title">Minha Biblioteca</h1>
+                <p class="page-subtitle">Organize seus livros do seu jeito.</p>
+            </div>
+
+            <!-- Controles: Busca, Adicionar Livro e Toggle de Filtros -->
+            <div class="library-controls">
+                <div class="search-bar-library">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="10" cy="10" r="7"/>
+                        <path d="M15 15l6 6"/>
+                    </svg>
+                    <input type="search" id="library-search-input" placeholder="Buscar livro, autor ou gênero...">
+                </div>
+
+                <button type="button" class="btn-primary" onclick="openBookModal()">
+                    <span style="font-size: 18px; line-height: 1;">+</span> Adicionar livro
+                </button>
+
+                <button type="button" id="btn-toggle-filters" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.8" stroke-linecap="round">
+                        <path d="M4 6h16M7 12h10M10 18h4"/>
+                    </svg>
+                    Filtros
+                </button>
+            </div>
+
+            <!-- Barra de Pílulas de Filtro -->
+            <div id="filter-pills-row" class="filter-pills-row">
+                <button type="button" class="filter-pill active" data-status="Todos">Todos</button>
+                <button type="button" class="filter-pill" data-status="Quero ler">Quero ler</button>
+                <button type="button" class="filter-pill" data-status="Lendo">Lendo</button>
+                <button type="button" class="filter-pill" data-status="Lido">Lido</button>
+            </div>
+
+            <!-- Contador de Livros Encontrados -->
+            <p id="library-count-text" class="library-count-label">Carregando livros...</p>
+
+            <!-- Grade de Livros da Biblioteca -->
+            <section id="library-grid" class="library-grid">
+                <!-- Gerado dinamicamente via app.js -->
+            </section>
+
+            <!-- Paginação -->
+            <div id="library-pagination" class="pagination-row">
+                <button type="button" id="btn-page-prev" class="btn-page">Anterior</button>
+                <span id="library-page-indicator" class="page-indicator">1 de 1</span>
+                <button type="button" id="btn-page-next" class="btn-page">Próxima</button>
+            </div>
+
+        </main>
+
+        <!-- ================================================================
+             TELA 3: METAS DE LEITURA
+             ================================================================ -->
+        <main id="view-metas" class="view-section main-content">
+
+            <div class="goals-header-row">
+                <div>
+                    <h1 class="page-title">Minhas metas</h1>
+                    <p class="page-subtitle">Acompanhe suas conquistas e crie novos objetivos de leitura.</p>
+                </div>
+                <button type="button" class="btn-primary" onclick="openGoalModal()">
+                    + Nova meta
+                </button>
+            </div>
+
+            <!-- Indicadores Numéricos de Metas -->
+            <section class="metrics-grid" style="margin-top: 24px;">
+                <div class="metric-card library">
+                    <span style="color: var(--primary); font-size: 24px; font-weight: bold;">◎</span>
+                    <div>
+                        <p id="goal-metric-year" class="metric-value">0</p>
+                        <p id="goal-card-year-title" class="metric-label">Meta do ano</p>
+                    </div>
+                </div>
+
+                <div class="metric-card reading">
+                    <span style="color: var(--status-reading-text); font-size: 24px; font-weight: bold;">✓</span>
+                    <div>
+                        <p id="goal-metric-read" class="metric-value">0</p>
+                        <p class="metric-label">Lidos no total</p>
+                    </div>
+                </div>
+
+                <div class="metric-card want">
+                    <span style="color: var(--status-want-text); font-size: 24px; font-weight: bold;">↗</span>
+                    <div>
+                        <p id="goal-metric-pct" class="metric-value">0%</p>
+                        <p class="metric-label">Referência geral</p>
+                    </div>
+                </div>
+
+                <div class="metric-card read">
+                    <span style="color: var(--status-read-text); font-size: 24px; font-weight: bold;">▣</span>
+                    <div>
+                        <p id="goal-metric-missing" class="metric-value">0</p>
+                        <p class="metric-label">Faltam</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel Principal de Metas: Gráfico e Lista -->
+            <div class="goals-grid-main">
+
+                <!-- Gráfico de Metas ao Longo dos Anos -->
+                <section class="chart-card">
+                    <h2 class="aside-card-title">Metas ao longo dos anos</h2>
+                    <p class="aside-card-subtitle">Quantidade de livros planejados por ano</p>
+                    <div id="goals-chart" class="chart-container">
+                        <!-- Gerado dinamicamente via app.js -->
+                    </div>
+                </section>
+
+                <!-- Lista de Metas Anuais -->
+                <section class="goals-list-card">
+                    <h2 class="aside-card-title">Minhas metas</h2>
+                    <div id="goals-list" class="goals-list-items">
+                        <!-- Gerado dinamicamente via app.js -->
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Banner Inferior de Encorajamento -->
+            <section class="goals-footer-banner">
+                <div>
+                    <h2 style="font-size: 17px; font-weight: 700;">Uma meta de cada vez</h2>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 6px;">
+                        Continue lendo e mantenha seu ritmo. Cada livro conta.
+                    </p>
+                </div>
+                <button type="button" class="btn-secondary" onclick="openGoalModal()">
+                    Editar metas
+                </button>
+            </section>
+
+        </main>
+
+        <!-- ================================================================
+             TELA 4: LOGIN E CADASTRO
+             ================================================================ -->
+        <main id="view-login" class="view-section auth-page">
+
+            <!-- Lado Esquerdo: Banner da Marca e Ilustração -->
+            <section class="auth-side-brand">
+                <a href="#inicio" class="auth-brand-logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/>
+                        <path d="M12 6v14"/>
+                    </svg>
+                    <span>LeituraJá</span>
+                </a>
+
+                <div class="auth-brand-text">
+                    <h1>Um espaço para suas leituras.</h1>
+                    <p>Guarde seus livros, acompanhe seu progresso e leia mais.</p>
+                </div>
+
+                <div class="auth-brand-art">
+                    <img src="assets/ilustracao-livros.svg" alt="Ilustração LeituraJá">
+                </div>
+
+                <p class="auth-brand-footer">Feito para quem gosta de ler.</p>
+            </section>
+
+            <!-- Lado Direito: Formulário Interativo -->
+            <section class="auth-side-form">
+                <div class="auth-form-container">
+                    <h2 id="auth-title" class="auth-title">Bem-vindo de volta</h2>
+                    <p id="auth-subtitle" class="auth-subtitle">Entre na sua conta para continuar lendo.</p>
+
+                    <form id="auth-form" class="auth-form">
+
+                        <!-- Campo Nome (visível apenas em modo cadastro) -->
+                        <div id="auth-name-group" class="form-group" style="display: none;">
+                            <label for="auth-nome" class="form-label">Nome completo</label>
+                            <input type="text" id="auth-nome" placeholder="Digite seu nome" class="form-input-simple">
+                        </div>
+
+                        <!-- Campo E-mail -->
+                        <div class="form-group">
+                            <label for="auth-email" class="form-label">E-mail</label>
+                            <div class="form-input-wrapper">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                                    <path d="m3 7 9 7 9-7"/>
+                                </svg>
+                                <input type="email" id="auth-email" value="gabriel@fei.edu.br" placeholder="seuemail@exemplo.com" required>
+                            </div>
+                        </div>
+
+                        <!-- Campo Senha -->
+                        <div class="form-group">
+                            <label for="auth-senha" class="form-label">Senha</label>
+                            <div class="form-input-wrapper">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                                    <rect x="5" y="10" width="14" height="11" rx="2"/>
+                                    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                                </svg>
+                                <input type="password" id="auth-senha" value="12345678" placeholder="••••••••" minlength="6" required>
+                            </div>
+                        </div>
+
+                        <div id="auth-forgot-link" class="auth-forgot">
+                            <a href="#" onclick="alert('Funcionalidade demonstrativa: digite qualquer e-mail e senha para entrar!')">Esqueci minha senha</a>
+                        </div>
+
+                        <div id="auth-error-msg" class="form-error"></div>
+
+                        <button type="submit" id="auth-submit-btn" class="btn-primary btn-full" style="margin-top: 24px;">
+                            Entrar
+                        </button>
+                    </form>
+
+                    <div class="auth-toggle-row">
+                        <span id="auth-toggle-prompt">Ainda não tem uma conta?</span>
+                        <button type="button" id="auth-toggle-btn" class="auth-toggle-btn">Cadastre-se</button>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 12px; margin-top: 40px; text-align: center;">
+                        LeituraJá © 2026 - FEI CCP310
+                    </p>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- ================================================================
+             BARRA DE NAVEGAÇÃO INFERIOR (MOBILE)
+             ================================================================ -->
+        <nav id="mobile-nav" class="mobile-nav">
+            <button type="button" class="mobile-nav-item active" data-view="inicio">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+                <span>Início</span>
+            </button>
+            <button type="button" class="mobile-nav-item" data-view="biblioteca">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="4" height="16" rx="1"/>
+                    <rect x="9" y="4" width="4" height="16" rx="1"/>
+                    <path d="M16 5l4-1 2 15-4 1-2-15Z"/>
+                </svg>
+                <span>Biblioteca</span>
+            </button>
+            <button type="button" class="mobile-nav-item" data-view="metas">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                </svg>
+                <span>Metas</span>
+            </button>
+        </nav>
+
+        <!-- ================================================================
+             MODAL: ADICIONAR / EDITAR LIVRO
+             ================================================================ -->
+        <div id="modal-book" class="modal-backdrop">
+            <div class="modal-dialog">
+                <h2 id="modal-book-title" class="modal-title">Adicionar livro</h2>
+
+                <form id="book-form">
+                    <div class="form-group">
+                        <label for="book-title-input" class="form-label">Título</label>
+                        <input type="text" id="book-title-input" required maxlength="200" class="form-input-simple" placeholder="Ex: Duna">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="book-author-input" class="form-label">Autor</label>
+                        <input type="text" id="book-author-input" required maxlength="150" class="form-input-simple" placeholder="Ex: Frank Herbert">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="book-status-select" class="form-label">Status</label>
+                        <select id="book-status-select" class="form-input-simple">
+                            <option value="Quero ler">Quero ler</option>
+                            <option value="Lendo">Lendo</option>
+                            <option value="Lido">Lido</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="book-total-input" class="form-label">Total de páginas</label>
+                            <input type="number" id="book-total-input" min="1" required class="form-input-simple" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="book-current-input" class="form-label">Página atual</label>
+                            <input type="number" id="book-current-input" min="0" required class="form-input-simple" value="0">
+                        </div>
+                    </div>
+
+                    <div id="book-form-error" class="form-error"></div>
+
+                    <div class="modal-actions">
+                        <button type="button" id="btn-cancel-book" class="btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+
+                    <div style="margin-top: 16px; text-align: center;">
+                        <button type="button" id="btn-delete-book" class="btn-danger-text" style="display: none;">
+                            Excluir livro da biblioteca
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ================================================================
+             MODAL: ADICIONAR / EDITAR META
+             ================================================================ -->
+        <div id="modal-goal" class="modal-backdrop">
+            <div class="modal-dialog">
+                <h2 id="modal-goal-title" class="modal-title">Adicionar meta</h2>
+
+                <form id="goal-form">
+                    <div class="form-group">
+                        <label for="goal-year-input" class="form-label">Ano da meta</label>
+                        <input type="number" id="goal-year-input" min="2000" max="2100" required class="form-input-simple">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="goal-qty-input" class="form-label">Quantidade de livros planejados</label>
+                        <input type="number" id="goal-qty-input" min="1" max="1000" required class="form-input-simple">
+                    </div>
+
+                    <div id="goal-form-error" class="form-error"></div>
+
+                    <div class="modal-actions">
+                        <button type="button" id="btn-cancel-goal" class="btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+
+                    <div style="margin-top: 16px; text-align: center;">
+                        <button type="button" id="btn-delete-goal" class="btn-danger-text" style="display: none;">
+                            Excluir meta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script de Lógica do Cliente -->
+    <script src="app.js"></script>
+</body>
+</html>
