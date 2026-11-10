@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Início - LeituraJá</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/output.css">
+</head>
+
+<body class="bg-[#FAF9F6] text-[#25362F] xl:h-dvh xl:overflow-hidden pb-16 xl:pb-0" style="font-family: 'DM Sans', sans-serif;">
+
+    <header class="bg-white border-b border-[#E7EAE5]">
+
+        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-[84px] flex items-center justify-between">
+
+            <a href="index.html" class="flex items-center gap-3 hover:opacity-80">
+
+                <svg width="33" height="33" viewBox="0 0 24 24"
+                     fill="none" stroke="#246B55" stroke-width="1.5"
+                     stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/>
+                    <path d="M12 6v14"/>
+                </svg>
+
+                <span class="text-[27px] font-bold">LeituraJá</span>
+
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-9 h-full">
+
+                <a href="index.html"
+                   class="h-full flex items-center border-b-4 border-[#246B55] text-[#246B55] text-[15px] font-bold">
+                    Início
+                </a>
+
+                <a href="biblioteca.html"
+                   class="text-[15px] hover:text-[#246B55] hover:underline">
+                    Minha Biblioteca
+                </a>
+
+                <a href="metas.html"
+                   class="text-[15px] hover:text-[#246B55] hover:underline">
+                    Metas
+                </a>
+
+            </nav>
+
+            <div class="flex items-center gap-8">
+
+                <form action="biblioteca.html" method="get"
+                      class="hidden md:flex items-center gap-3 bg-[#F3F5F2] border border-[#E7EAE5] rounded-xl px-4 h-[46px] w-[266px]">
+
+                    <svg width="19" height="19" viewBox="0 0 24 24"
+                         fill="none" stroke="#75837B" stroke-width="1.8">
+                        <circle cx="10" cy="10" r="7"/>
+                        <path d="M15 15l6 6"/>
+                    </svg>
+
+                    <input type="search" name="busca"
+                           placeholder="Buscar livros..."
+                           class="bg-transparent outline-none text-[13px] w-full">
+
+                </form>
+
+                <a href="login.html"
+                   class="bg-[#DDEDE4] rounded-full w-[42px] h-[42px] flex items-center justify-center hover:bg-[#C5E1D2]">
+
+                    <svg width="22" height="22" viewBox="0 0 24 24"
+                         fill="none" stroke="#246B55" stroke-width="1.5">
+                        <circle cx="12" cy="8" r="4"/>
+                        <path d="M4 21c0-5 3-8 8-8s8 3 8 8"/>
+                    </svg>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <main class="max-w-[1440px] mx-auto px-6 lg:px-12 py-6 xl:h-[calc(100dvh-84px)] xl:flex xl:flex-col xl:gap-4 xl:overflow-hidden">
+
+        <section class="bg-white border border-[#E7EAE5] rounded-[18px] overflow-hidden xl:h-[32%] xl:shrink-0">
+
+            <div class="flex flex-col lg:flex-row h-full">
+
+                <div class="bg-[#F5F5F0] lg:w-[52%] px-8 lg:px-[38px] py-8 flex flex-col justify-center">
+
+                    <p class="text-[#246B55] text-xs font-bold">
+                        ORGANIZE • ACOMPANHE • LEIA MAIS
+                    </p>
+
+                    <h1 class="text-[32px] lg:text-[39px] font-bold mt-5 leading-tight">
+                        Bem-vindo de volta!
+                    </h1>
+
+                    <p class="text-[#75837B] text-[16px] lg:text-[17px] mt-3">
+                        Organize seus livros, acompanhe suas leituras e avance nas suas metas.
+                    </p>
+
+                    <div class="mt-7">
+
+                        <a href="biblioteca.html"
+                           class="inline-block bg-[#246B55] text-white text-sm font-semibold px-5 py-3 rounded-[11px] hover:bg-[#183F34]">
+                            + Adicionar livro
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="hidden lg:flex lg:w-[48%] items-center justify-center">
+
+                    <img src="assets/ilustracao-livros.svg"
+                         alt="Ilustração de livros e planta"
+                         class="w-[430px] max-w-full max-h-full object-contain">
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-5 xl:mt-0 xl:h-[15%] xl:shrink-0">
+
+            <a href="biblioteca.html"
+               class="bg-[#DDEDE4] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
+
+                <div class="w-[45px] shrink-0 flex justify-center text-[#246B55]">
+
+                    <svg width="21" height="21" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="4" height="16" rx="1"/>
+                        <rect x="9" y="4" width="4" height="16" rx="1"/>
+                        <path d="M16 5l4-1 2 15-4 1-2-15Z"/>
+                    </svg>
+
+                </div>
+
+                <div>
+                    <h2 class="text-[29px] font-bold leading-tight">12</h2>
+                    <p class="text-[#75837B] text-sm">Na biblioteca</p>
+                </div>
+
+            </a>
+
+            <a href="biblioteca.html?status=lendo"
+               class="bg-[#E8F2F8] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
+
+                <div class="w-[45px] shrink-0 flex justify-center text-[#3B7EAE]">
+
+                    <svg width="21" height="21" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1"/>
+                        <path d="M12 6c3-2 6-2 9-1v14c-3-1-6-1-9 1"/>
+                        <path d="M12 6v14"/>
+                    </svg>
+
+                </div>
+
+                <div>
+                    <h2 class="text-[29px] font-bold leading-tight">4</h2>
+                    <p class="text-[#75837B] text-sm">Lendo</p>
+                </div>
+
+            </a>
+
+            <a href="biblioteca.html?status=quero-ler"
+               class="bg-[#FEF1D9] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
+
+                <div class="w-[45px] shrink-0 flex justify-center text-[#D28C34]">
+
+                    <svg width="21" height="21" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M12 7v5l3 2"/>
+                    </svg>
+
+                </div>
+
+                <div>
+                    <h2 class="text-[29px] font-bold leading-tight">5</h2>
+                    <p class="text-[#75837B] text-sm">Quero ler</p>
+                </div>
+
+            </a>
+
+            <a href="biblioteca.html?status=lido"
+               class="bg-[#FBEAED] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
+
+                <div class="w-[45px] shrink-0 flex justify-center text-[#BC5D64]">
+
+                    <svg width="21" height="21" viewBox="0 0 24 24"
+                         fill="none" stroke="currentColor" stroke-width="1.8"
+                         stroke-linecap="round">
+                        <path d="M5 12l5 5L20 7"/>
+                    </svg>
+
+                </div>
+
+                <div>
+                    <h2 class="text-[29px] font-bold leading-tight">3</h2>
+                    <p class="text-[#75837B] text-sm">Lidos</p>
+                </div>
+
+            </a>
+
+        </section>
+
+        <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_434px] gap-6 mt-8 xl:mt-0 xl:flex-1 xl:min-h-0">
+
+            <section class="flex flex-col min-h-0">
+
+                <div class="flex items-center justify-between mb-4 shrink-0">
+
+                    <h2 class="text-[24px] font-bold">
+                        Leituras em andamento
+                    </h2>
+
+                    <a href="biblioteca.html"
+                       class="text-[#246B55] font-semibold text-sm hover:underline">
+                        Ver todos →
+                    </a>
+
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[15px] flex-1 min-h-0">
+
+                    <div class="bg-white border border-[#E7EAE5] rounded-2xl p-[17px] hover:shadow-lg flex flex-col min-h-0">
+
+                        <div class="flex gap-[13px]">
+
+                            <img src="assets/capa-duna.svg"
+                                 alt="Duna"
+                                 class="w-[94px] h-[137px] xl:h-[min(15vh,137px)] object-cover rounded-lg shrink-0">
+
+                            <div class="min-w-0">
+
+                                <h3 class="text-[17px] font-bold">Duna</h3>
+
+                                <p class="text-[#75837B] text-xs mt-2">
+                                    Frank Herbert
+                                </p>
+
+                                <p class="text-[#246B55] text-xs font-semibold mt-5">
+                                    Lendo
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-auto pt-5">
+
+                            <div class="bg-[#E7EAE5] h-2 rounded-full">
+                                <div class="bg-[#246B55] h-2 w-[44%] rounded-full"></div>
+                            </div>
+
+                            <div class="flex justify-between text-xs mt-2">
+                                <p class="text-[#75837B]">320 de 720 páginas</p>
+                                <p class="font-semibold">44%</p>
+                            </div>
+
+                            <a href="biblioteca.html"
+                               class="block bg-[#F3F5F2] rounded-lg text-center text-[13px] font-semibold py-2 mt-4 hover:bg-[#DDEDE4]">
+                                Continuar lendo
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white border border-[#E7EAE5] rounded-2xl p-[17px] hover:shadow-lg flex flex-col min-h-0">
+
+                        <div class="flex gap-[13px]">
+
+                            <img src="assets/capa-habitos.svg"
+                                 alt="Hábitos Atômicos"
+                                 class="w-[94px] h-[137px] xl:h-[min(15vh,137px)] object-cover rounded-lg shrink-0">
+
+                            <div class="min-w-0">
+
+                                <h3 class="text-[17px] font-bold leading-snug">
+                                    Hábitos Atômicos
+                                </h3>
+
+                                <p class="text-[#75837B] text-xs mt-2">
+                                    James Clear
+                                </p>
+
+                                <p class="text-[#246B55] text-xs font-semibold mt-5">
+                                    Lendo
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-auto pt-5">
+
+                            <div class="bg-[#E7EAE5] h-2 rounded-full">
+                                <div class="bg-[#246B55] h-2 w-[47%] rounded-full"></div>
+                            </div>
+
+                            <div class="flex justify-between text-xs mt-2">
+                                <p class="text-[#75837B]">150 de 320 páginas</p>
+                                <p class="font-semibold">47%</p>
+                            </div>
+
+                            <a href="biblioteca.html"
+                               class="block bg-[#F3F5F2] rounded-lg text-center text-[13px] font-semibold py-2 mt-4 hover:bg-[#DDEDE4]">
+                                Continuar lendo
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white border border-[#E7EAE5] rounded-2xl p-[17px] hover:shadow-lg flex flex-col min-h-0">
+
+                        <div class="flex gap-[13px]">
+
+                            <img src="assets/capa-aneis.svg"
+                                 alt="O Senhor dos Anéis"
+                                 class="w-[94px] h-[137px] xl:h-[min(15vh,137px)] object-cover rounded-lg shrink-0">
+
+                            <div class="min-w-0">
+
+                                <h3 class="text-[17px] font-bold leading-snug">
+                                    O Senhor dos Anéis
+                                </h3>
+
+                                <p class="text-[#75837B] text-xs mt-2">
+                                    J. R. R. Tolkien
+                                </p>
+
+                                <p class="text-[#246B55] text-xs font-semibold mt-5">
+                                    Lendo
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        <div class="mt-auto pt-5">
+
+                            <div class="bg-[#E7EAE5] h-2 rounded-full">
+                                <div class="bg-[#246B55] h-2 w-[42%] rounded-full"></div>
+                            </div>
+
+                            <div class="flex justify-between text-xs mt-2">
+                                <p class="text-[#75837B]">500 de 1200 páginas</p>
+                                <p class="font-semibold">42%</p>
+                            </div>
+
+                            <a href="biblioteca.html"
+                               class="block bg-[#F3F5F2] rounded-lg text-center text-[13px] font-semibold py-2 mt-4 hover:bg-[#DDEDE4]">
+                                Continuar lendo
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <aside class="flex flex-col gap-5 min-h-0">
+
+                <div class="bg-white border border-[#E7EAE5] rounded-2xl p-6 shrink-0">
+
+                    <div class="flex justify-between items-center gap-3">
+
+                        <h2 class="text-[19px] font-bold">
+                            <span class="text-[#246B55]">◎</span> Meta de leitura
+                        </h2>
+
+                        <a href="metas.html"
+                           class="text-[#246B55] text-xs font-semibold hover:underline">
+                            Editar metas
+                        </a>
+
+                    </div>
+
+                    <div class="flex justify-between items-center mt-6">
+
+                        <h3 class="text-[23px] font-bold">
+                            8 de 20 livros
+                        </h3>
+
+                        <p class="text-[#75837B] text-sm">
+                            40%
+                        </p>
+
+                    </div>
+
+                    <div class="bg-[#E7EAE5] h-[10px] rounded-full mt-5">
+                        <div class="bg-[#246B55] h-[10px] w-[40%] rounded-full"></div>
+                    </div>
+
+                </div>
+
+                <div class="bg-white border border-[#E7EAE5] rounded-2xl p-6 flex-1 min-h-0">
+
+                    <h2 class="text-lg font-bold">
+                        Próximos da sua lista
+                    </h2>
+
+                    <a href="biblioteca.html"
+                       class="flex items-center gap-4 mt-5 rounded-lg hover:bg-[#F3F5F2]">
+
+                        <img src="assets/capa-psicologia.svg"
+                             alt="A Psicologia do Dinheiro"
+                             class="w-[43px] h-[60px] rounded shrink-0">
+
+                        <div class="flex-1 min-w-0">
+
+                            <h3 class="text-[13px] font-semibold">
+                                A Psicologia do Dinheiro
+                            </h3>
+
+                            <p class="text-[#75837B] text-xs mt-1">
+                                Morgan Housel
+                            </p>
+
+                            <p class="text-[#D28C34] text-xs text-right mt-2">
+                                Quero ler →
+                            </p>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </main>
+
+    <nav class="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t border-[#E7EAE5] flex justify-around p-4 z-20">
+
+        <a href="index.html" class="text-[#246B55] font-bold text-sm">
+            Início
+        </a>
+
+        <a href="biblioteca.html" class="text-sm hover:text-[#246B55]">
+            Biblioteca
+        </a>
+
+        <a href="metas.html" class="text-sm hover:text-[#246B55]">
+            Metas
+        </a>
+
+    </nav>
+
+</body>
+</html>
