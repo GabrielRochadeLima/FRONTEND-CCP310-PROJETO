@@ -35,7 +35,7 @@ As personas são representações fictícias utilizadas para orientar as decisõ
 
 | Campo | Descrição |
 | :--- | :--- |
-| **Idade** | 20 anos |
+| **Idade** | 45 anos |
 | **Ocupação** | Estudante e estagiário |
 | **Citação** | "Eu quero ler mais, mas começo um livro, paro e depois nem lembro quanto tempo fiquei sem ler." |
 | **Objetivos** | Criar uma rotina de leitura, estabelecer metas, acompanhar seu progresso e encontrar novos livros para ler. |
