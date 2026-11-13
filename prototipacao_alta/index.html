@@ -1,468 +1,558 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Início - LeituraJá</title>
+    <title>LeituraJá - Prototipação de Alta Fidelidade</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/output.css">
+    <!-- Fonte DM Sans (com fallback offline para fontes de sistema) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <!-- Folha de Estilos Local Consolidada -->
+    <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
-<body class="bg-[#FAF9F6] text-[#25362F] xl:h-dvh xl:overflow-hidden pb-16 xl:pb-0" style="font-family: 'DM Sans', sans-serif;">
+    <div id="app-container">
 
-    <header class="bg-white border-b border-[#E7EAE5]">
+        <!-- ================================================================
+             CABEÇALHO GLOBAL
+             ================================================================ -->
+        <header id="app-header" class="app-header">
+            <div class="header-container">
 
-        <div class="max-w-[1440px] mx-auto px-6 lg:px-12 h-[84px] flex items-center justify-between">
-
-            <a href="index.html" class="flex items-center gap-3 hover:opacity-80">
-
-                <svg width="33" height="33" viewBox="0 0 24 24"
-                     fill="none" stroke="#246B55" stroke-width="1.5"
-                     stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/>
-                    <path d="M12 6v14"/>
-                </svg>
-
-                <span class="text-[27px] font-bold">LeituraJá</span>
-
-            </a>
-
-            <nav class="hidden lg:flex items-center gap-9 h-full">
-
-                <a href="index.html"
-                   class="h-full flex items-center border-b-4 border-[#246B55] text-[#246B55] text-[15px] font-bold">
-                    Início
-                </a>
-
-                <a href="biblioteca.html"
-                   class="text-[15px] hover:text-[#246B55] hover:underline">
-                    Minha Biblioteca
-                </a>
-
-                <a href="metas.html"
-                   class="text-[15px] hover:text-[#246B55] hover:underline">
-                    Metas
-                </a>
-
-            </nav>
-
-            <div class="flex items-center gap-8">
-
-                <form action="biblioteca.html" method="get"
-                      class="hidden md:flex items-center gap-3 bg-[#F3F5F2] border border-[#E7EAE5] rounded-xl px-4 h-[46px] w-[266px]">
-
-                    <svg width="19" height="19" viewBox="0 0 24 24"
-                         fill="none" stroke="#75837B" stroke-width="1.8">
-                        <circle cx="10" cy="10" r="7"/>
-                        <path d="M15 15l6 6"/>
+                <!-- Logo da Marca -->
+                <a href="#inicio" id="header-logo-link" class="header-logo">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6c-2.5-1.8-5.7-2-9-1v14c3.3-1 6.5-.8 9 1 2.5-1.8 5.7-2 9-1V5c-3.3-1-6.5-.8-9 1Z"/>
+                        <path d="M12 6v14"/>
                     </svg>
-
-                    <input type="search" name="busca"
-                           placeholder="Buscar livros..."
-                           class="bg-transparent outline-none text-[13px] w-full">
-
-                </form>
-
-                <a href="login.html"
-                   class="bg-[#DDEDE4] rounded-full w-[42px] h-[42px] flex items-center justify-center hover:bg-[#C5E1D2]">
-
-                    <svg width="22" height="22" viewBox="0 0 24 24"
-                         fill="none" stroke="#246B55" stroke-width="1.5">
-                        <circle cx="12" cy="8" r="4"/>
-                        <path d="M4 21c0-5 3-8 8-8s8 3 8 8"/>
-                    </svg>
-
+                    <span class="header-logo-text">LeituraJá</span>
                 </a>
 
-            </div>
+                <!-- Navegação Desktop -->
+                <nav class="header-nav">
+                    <button type="button" class="nav-link active" data-view="inicio">Início</button>
+                    <button type="button" class="nav-link" data-view="biblioteca">Minha Biblioteca</button>
+                    <button type="button" class="nav-link" data-view="metas">Metas</button>
+                </nav>
 
-        </div>
+                <!-- Ações do Header (Busca rápida e Perfil) -->
+                <div class="header-actions">
+                    <form id="header-search-form" class="header-search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                            <circle cx="10" cy="10" r="7"/>
+                            <path d="m15 15 6 6"/>
+                        </svg>
+                        <input type="search" id="header-search-input" placeholder="Buscar livros...">
+                    </form>
 
-    </header>
+                    <!-- Botão do Perfil / Usuário -->
+                    <div style="position: relative;">
+                        <button type="button" id="user-profile-btn" class="user-btn" title="Perfil do usuário">
+                            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="8" r="4"/>
+                                <path d="M4 21c0-5 3-8 8-8s8 3 8 8"/>
+                            </svg>
+                        </button>
 
-    <main class="max-w-[1440px] mx-auto px-6 lg:px-12 py-6 xl:h-[calc(100dvh-84px)] xl:flex xl:flex-col xl:gap-4 xl:overflow-hidden">
-
-        <section class="bg-white border border-[#E7EAE5] rounded-[18px] overflow-hidden xl:h-[32%] xl:shrink-0">
-
-            <div class="flex flex-col lg:flex-row h-full">
-
-                <div class="bg-[#F5F5F0] lg:w-[52%] px-8 lg:px-[38px] py-8 flex flex-col justify-center">
-
-                    <p class="text-[#246B55] text-xs font-bold">
-                        ORGANIZE • ACOMPANHE • LEIA MAIS
-                    </p>
-
-                    <h1 class="text-[32px] lg:text-[39px] font-bold mt-5 leading-tight">
-                        Bem-vindo de volta!
-                    </h1>
-
-                    <p class="text-[#75837B] text-[16px] lg:text-[17px] mt-3">
-                        Organize seus livros, acompanhe suas leituras e avance nas suas metas.
-                    </p>
-
-                    <div class="mt-7">
-
-                        <a href="biblioteca.html"
-                           class="inline-block bg-[#246B55] text-white text-sm font-semibold px-5 py-3 rounded-[11px] hover:bg-[#183F34]">
-                            + Adicionar livro
-                        </a>
-
+                        <!-- Menu Dropdown do Usuário -->
+                        <div id="user-menu-dropdown" class="user-menu">
+                            <div class="user-menu-info">
+                                <p id="user-name-display" class="user-menu-name">Gabriel Lima</p>
+                                <p id="user-email-display" class="user-menu-email">gabriel@fei.edu.br</p>
+                            </div>
+                            <button type="button" class="user-menu-item" onclick="navigateTo('biblioteca')">
+                                <span>📚</span> Minha Biblioteca
+                            </button>
+                            <button type="button" class="user-menu-item" onclick="navigateTo('metas')">
+                                <span>🎯</span> Minhas Metas
+                            </button>
+                            <button type="button" id="btn-logout" class="user-menu-item danger">
+                                <span>🚪</span> Sair da Conta
+                            </button>
+                        </div>
                     </div>
-
-                </div>
-
-                <div class="hidden lg:flex lg:w-[48%] items-center justify-center">
-
-                    <img src="assets/ilustracao-livros.svg"
-                         alt="Ilustração de livros e planta"
-                         class="w-[430px] max-w-full max-h-full object-contain">
-
                 </div>
 
             </div>
+        </header>
 
-        </section>
+        <!-- ================================================================
+             TELA 1: INÍCIO (DASHBOARD)
+             ================================================================ -->
+        <main id="view-inicio" class="view-section main-content active">
 
-        <section class="grid grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6 mt-5 xl:mt-0 xl:h-[15%] xl:shrink-0">
+            <!-- Card de Boas-Vindas com Ilustração -->
+            <section class="welcome-card">
+                <div class="welcome-info">
+                    <p class="welcome-badge">ORGANIZE · ACOMPANHE · LEIA MAIS</p>
+                    <h1 id="home-welcome-title" class="welcome-title">Bem-vindo de volta!</h1>
+                    <p class="welcome-subtitle">Organize seus livros, acompanhe suas leituras e avance nas suas metas.</p>
+                    <div class="welcome-action">
+                        <button type="button" class="btn-primary" onclick="openBookModal()">
+                            <span style="font-size: 18px; line-height: 1;">+</span> Adicionar livro
+                        </button>
+                    </div>
+                </div>
+                <div class="welcome-art">
+                    <img src="assets/ilustracao-livros.svg" alt="Ilustração LeituraJá de livros e plantas">
+                </div>
+            </section>
 
-            <a href="biblioteca.html"
-               class="bg-[#DDEDE4] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
-
-                <div class="w-[45px] shrink-0 flex justify-center text-[#246B55]">
-
-                    <svg width="21" height="21" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="1.8"
-                         stroke-linecap="round" stroke-linejoin="round">
+            <!-- Cards com Indicadores Numéricos -->
+            <section class="metrics-grid">
+                <div class="metric-card library" onclick="navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <rect x="3" y="4" width="4" height="16" rx="1"/>
                         <rect x="9" y="4" width="4" height="16" rx="1"/>
                         <path d="M16 5l4-1 2 15-4 1-2-15Z"/>
                     </svg>
-
+                    <div>
+                        <p id="metric-library-count" class="metric-value">0</p>
+                        <p class="metric-label">Na biblioteca</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h2 class="text-[29px] font-bold leading-tight">12</h2>
-                    <p class="text-[#75837B] text-sm">Na biblioteca</p>
-                </div>
-
-            </a>
-
-            <a href="biblioteca.html?status=lendo"
-               class="bg-[#E8F2F8] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
-
-                <div class="w-[45px] shrink-0 flex justify-center text-[#3B7EAE]">
-
-                    <svg width="21" height="21" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="1.8"
-                         stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1"/>
-                        <path d="M12 6c3-2 6-2 9-1v14c-3-1-6-1-9 1"/>
+                <div class="metric-card reading" onclick="libraryState.filter='Lendo'; navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3B7EAE" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/>
                         <path d="M12 6v14"/>
                     </svg>
-
+                    <div>
+                        <p id="metric-reading-count" class="metric-value">0</p>
+                        <p class="metric-label">Lendo</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h2 class="text-[29px] font-bold leading-tight">4</h2>
-                    <p class="text-[#75837B] text-sm">Lendo</p>
-                </div>
-
-            </a>
-
-            <a href="biblioteca.html?status=quero-ler"
-               class="bg-[#FEF1D9] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
-
-                <div class="w-[45px] shrink-0 flex justify-center text-[#D28C34]">
-
-                    <svg width="21" height="21" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="1.8"
-                         stroke-linecap="round">
+                <div class="metric-card want" onclick="libraryState.filter='Quero ler'; navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#D28C34" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                         <circle cx="12" cy="12" r="9"/>
-                        <path d="M12 7v5l3 2"/>
+                        <path d="M12 7v5l4 2"/>
                     </svg>
-
+                    <div>
+                        <p id="metric-want-count" class="metric-value">0</p>
+                        <p class="metric-label">Quero ler</p>
+                    </div>
                 </div>
 
-                <div>
-                    <h2 class="text-[29px] font-bold leading-tight">5</h2>
-                    <p class="text-[#75837B] text-sm">Quero ler</p>
-                </div>
-
-            </a>
-
-            <a href="biblioteca.html?status=lido"
-               class="bg-[#FBEAED] border border-[#E7EAE5] rounded-[14px] min-h-[100px] xl:min-h-0 p-4 flex items-center gap-4 hover:shadow-md">
-
-                <div class="w-[45px] shrink-0 flex justify-center text-[#BC5D64]">
-
-                    <svg width="21" height="21" viewBox="0 0 24 24"
-                         fill="none" stroke="currentColor" stroke-width="1.8"
-                         stroke-linecap="round">
-                        <path d="M5 12l5 5L20 7"/>
+                <div class="metric-card read" onclick="libraryState.filter='Lido'; navigateTo('biblioteca')">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#BC5D64" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M7 12l3 3 6-6"/>
                     </svg>
-
-                </div>
-
-                <div>
-                    <h2 class="text-[29px] font-bold leading-tight">3</h2>
-                    <p class="text-[#75837B] text-sm">Lidos</p>
-                </div>
-
-            </a>
-
-        </section>
-
-        <div class="grid grid-cols-1 xl:grid-cols-[minmax(0,1fr)_434px] gap-6 mt-8 xl:mt-0 xl:flex-1 xl:min-h-0">
-
-            <section class="flex flex-col min-h-0">
-
-                <div class="flex items-center justify-between mb-4 shrink-0">
-
-                    <h2 class="text-[24px] font-bold">
-                        Leituras em andamento
-                    </h2>
-
-                    <a href="biblioteca.html"
-                       class="text-[#246B55] font-semibold text-sm hover:underline">
-                        Ver todos →
-                    </a>
-
-                </div>
-
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[15px] flex-1 min-h-0">
-
-                    <div class="bg-white border border-[#E7EAE5] rounded-2xl p-[17px] hover:shadow-lg flex flex-col min-h-0">
-
-                        <div class="flex gap-[13px]">
-
-                            <img src="assets/capa-duna.svg"
-                                 alt="Duna"
-                                 class="w-[94px] h-[137px] xl:h-[min(15vh,137px)] object-cover rounded-lg shrink-0">
-
-                            <div class="min-w-0">
-
-                                <h3 class="text-[17px] font-bold">Duna</h3>
-
-                                <p class="text-[#75837B] text-xs mt-2">
-                                    Frank Herbert
-                                </p>
-
-                                <p class="text-[#246B55] text-xs font-semibold mt-5">
-                                    Lendo
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="mt-auto pt-5">
-
-                            <div class="bg-[#E7EAE5] h-2 rounded-full">
-                                <div class="bg-[#246B55] h-2 w-[44%] rounded-full"></div>
-                            </div>
-
-                            <div class="flex justify-between text-xs mt-2">
-                                <p class="text-[#75837B]">320 de 720 páginas</p>
-                                <p class="font-semibold">44%</p>
-                            </div>
-
-                            <a href="biblioteca.html"
-                               class="block bg-[#F3F5F2] rounded-lg text-center text-[13px] font-semibold py-2 mt-4 hover:bg-[#DDEDE4]">
-                                Continuar lendo
-                            </a>
-
-                        </div>
-
+                    <div>
+                        <p id="metric-read-count" class="metric-value">0</p>
+                        <p class="metric-label">Lidos</p>
                     </div>
-
-                    <div class="bg-white border border-[#E7EAE5] rounded-2xl p-[17px] hover:shadow-lg flex flex-col min-h-0">
-
-                        <div class="flex gap-[13px]">
-
-                            <img src="assets/capa-habitos.svg"
-                                 alt="Hábitos Atômicos"
-                                 class="w-[94px] h-[137px] xl:h-[min(15vh,137px)] object-cover rounded-lg shrink-0">
-
-                            <div class="min-w-0">
-
-                                <h3 class="text-[17px] font-bold leading-snug">
-                                    Hábitos Atômicos
-                                </h3>
-
-                                <p class="text-[#75837B] text-xs mt-2">
-                                    James Clear
-                                </p>
-
-                                <p class="text-[#246B55] text-xs font-semibold mt-5">
-                                    Lendo
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="mt-auto pt-5">
-
-                            <div class="bg-[#E7EAE5] h-2 rounded-full">
-                                <div class="bg-[#246B55] h-2 w-[47%] rounded-full"></div>
-                            </div>
-
-                            <div class="flex justify-between text-xs mt-2">
-                                <p class="text-[#75837B]">150 de 320 páginas</p>
-                                <p class="font-semibold">47%</p>
-                            </div>
-
-                            <a href="biblioteca.html"
-                               class="block bg-[#F3F5F2] rounded-lg text-center text-[13px] font-semibold py-2 mt-4 hover:bg-[#DDEDE4]">
-                                Continuar lendo
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                    <div class="bg-white border border-[#E7EAE5] rounded-2xl p-[17px] hover:shadow-lg flex flex-col min-h-0">
-
-                        <div class="flex gap-[13px]">
-
-                            <img src="assets/capa-aneis.svg"
-                                 alt="O Senhor dos Anéis"
-                                 class="w-[94px] h-[137px] xl:h-[min(15vh,137px)] object-cover rounded-lg shrink-0">
-
-                            <div class="min-w-0">
-
-                                <h3 class="text-[17px] font-bold leading-snug">
-                                    O Senhor dos Anéis
-                                </h3>
-
-                                <p class="text-[#75837B] text-xs mt-2">
-                                    J. R. R. Tolkien
-                                </p>
-
-                                <p class="text-[#246B55] text-xs font-semibold mt-5">
-                                    Lendo
-                                </p>
-
-                            </div>
-
-                        </div>
-
-                        <div class="mt-auto pt-5">
-
-                            <div class="bg-[#E7EAE5] h-2 rounded-full">
-                                <div class="bg-[#246B55] h-2 w-[42%] rounded-full"></div>
-                            </div>
-
-                            <div class="flex justify-between text-xs mt-2">
-                                <p class="text-[#75837B]">500 de 1200 páginas</p>
-                                <p class="font-semibold">42%</p>
-                            </div>
-
-                            <a href="biblioteca.html"
-                               class="block bg-[#F3F5F2] rounded-lg text-center text-[13px] font-semibold py-2 mt-4 hover:bg-[#DDEDE4]">
-                                Continuar lendo
-                            </a>
-
-                        </div>
-
-                    </div>
-
                 </div>
-
             </section>
 
-            <aside class="flex flex-col gap-5 min-h-0">
+            <!-- Layout Principal: Leituras em Andamento + Barra Lateral -->
+            <div class="home-columns">
 
-                <div class="bg-white border border-[#E7EAE5] rounded-2xl p-6 shrink-0">
-
-                    <div class="flex justify-between items-center gap-3">
-
-                        <h2 class="text-[19px] font-bold">
-                            <span class="text-[#246B55]">◎</span> Meta de leitura
-                        </h2>
-
-                        <a href="metas.html"
-                           class="text-[#246B55] text-xs font-semibold hover:underline">
-                            Editar metas
-                        </a>
-
+                <!-- Coluna da Esquerda: Leituras em Andamento -->
+                <section>
+                    <div class="section-header">
+                        <h2 class="section-title">Leituras em andamento</h2>
+                        <span class="section-link" onclick="navigateTo('biblioteca')">Ver todos →</span>
                     </div>
 
-                    <div class="flex justify-between items-center mt-6">
+                    <div id="home-reading-grid" class="reading-now-grid">
+                        <!-- Gerado dinamicamente via app.js -->
+                    </div>
+                </section>
 
-                        <h3 class="text-[23px] font-bold">
-                            8 de 20 livros
-                        </h3>
+                <!-- Coluna da Direita: Meta do Ano e Próximo Livro -->
+                <aside class="home-aside">
 
-                        <p class="text-[#75837B] text-sm">
-                            40%
-                        </p>
+                    <!-- Meta de Leitura Resumo -->
+                    <div class="aside-card">
+                        <div class="aside-title-row">
+                            <h2 class="aside-card-title">Meta de leitura</h2>
+                            <span class="section-link" onclick="navigateTo('metas')">Editar metas</span>
+                        </div>
+                        <p class="aside-card-subtitle">Seu progresso de leitura neste ano</p>
 
+                        <div style="margin-top: 24px;">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <p id="home-goal-text" style="font-size: 22px; font-weight: 700;">0 de 0 livros</p>
+                                <span id="home-goal-pct" style="color: var(--primary); font-weight: 700; font-size: 14px;">0%</span>
+                            </div>
+                            <div class="progress-bar-bg" style="height: 9px; margin-top: 12px;">
+                                <div id="home-goal-progress" class="progress-bar-fill" style="width: 0%;"></div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="bg-[#E7EAE5] h-[10px] rounded-full mt-5">
-                        <div class="bg-[#246B55] h-[10px] w-[40%] rounded-full"></div>
+                    <!-- Próximos da Sua Lista -->
+                    <div class="aside-card">
+                        <h2 class="aside-card-title">Próximos da sua lista</h2>
+                        <div id="home-next-book">
+                            <!-- Gerado dinamicamente via app.js -->
+                        </div>
                     </div>
 
+                </aside>
+
+            </div>
+
+        </main>
+
+        <!-- ================================================================
+             TELA 2: MINHA BIBLIOTECA
+             ================================================================ -->
+        <main id="view-biblioteca" class="view-section main-content">
+
+            <div>
+                <h1 class="page-title">Minha Biblioteca</h1>
+                <p class="page-subtitle">Organize seus livros do seu jeito.</p>
+            </div>
+
+            <!-- Controles: Busca, Adicionar Livro e Toggle de Filtros -->
+            <div class="library-controls">
+                <div class="search-bar-library">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                        <circle cx="10" cy="10" r="7"/>
+                        <path d="M15 15l6 6"/>
+                    </svg>
+                    <input type="search" id="library-search-input" placeholder="Buscar livro, autor ou gênero...">
                 </div>
 
-                <div class="bg-white border border-[#E7EAE5] rounded-2xl p-6 flex-1 min-h-0">
+                <button type="button" class="btn-primary" onclick="openBookModal()">
+                    <span style="font-size: 18px; line-height: 1;">+</span> Adicionar livro
+                </button>
 
-                    <h2 class="text-lg font-bold">
-                        Próximos da sua lista
-                    </h2>
+                <button type="button" id="btn-toggle-filters" class="btn-secondary">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.8" stroke-linecap="round">
+                        <path d="M4 6h16M7 12h10M10 18h4"/>
+                    </svg>
+                    Filtros
+                </button>
+            </div>
 
-                    <a href="biblioteca.html"
-                       class="flex items-center gap-4 mt-5 rounded-lg hover:bg-[#F3F5F2]">
+            <!-- Barra de Pílulas de Filtro -->
+            <div id="filter-pills-row" class="filter-pills-row">
+                <button type="button" class="filter-pill active" data-status="Todos">Todos</button>
+                <button type="button" class="filter-pill" data-status="Quero ler">Quero ler</button>
+                <button type="button" class="filter-pill" data-status="Lendo">Lendo</button>
+                <button type="button" class="filter-pill" data-status="Lido">Lido</button>
+            </div>
 
-                        <img src="assets/capa-psicologia.svg"
-                             alt="A Psicologia do Dinheiro"
-                             class="w-[43px] h-[60px] rounded shrink-0">
+            <!-- Contador de Livros Encontrados -->
+            <p id="library-count-text" class="library-count-label">Carregando livros...</p>
 
-                        <div class="flex-1 min-w-0">
+            <!-- Grade de Livros da Biblioteca -->
+            <section id="library-grid" class="library-grid">
+                <!-- Gerado dinamicamente via app.js -->
+            </section>
 
-                            <h3 class="text-[13px] font-semibold">
-                                A Psicologia do Dinheiro
-                            </h3>
+            <!-- Paginação -->
+            <div id="library-pagination" class="pagination-row">
+                <button type="button" id="btn-page-prev" class="btn-page">Anterior</button>
+                <span id="library-page-indicator" class="page-indicator">1 de 1</span>
+                <button type="button" id="btn-page-next" class="btn-page">Próxima</button>
+            </div>
 
-                            <p class="text-[#75837B] text-xs mt-1">
-                                Morgan Housel
-                            </p>
+        </main>
 
-                            <p class="text-[#D28C34] text-xs text-right mt-2">
-                                Quero ler →
-                            </p>
+        <!-- ================================================================
+             TELA 3: METAS DE LEITURA
+             ================================================================ -->
+        <main id="view-metas" class="view-section main-content">
 
+            <div class="goals-header-row">
+                <div>
+                    <h1 class="page-title">Minhas metas</h1>
+                    <p class="page-subtitle">Acompanhe suas conquistas e crie novos objetivos de leitura.</p>
+                </div>
+                <button type="button" class="btn-primary" onclick="openGoalModal()">
+                    + Nova meta
+                </button>
+            </div>
+
+            <!-- Indicadores Numéricos de Metas -->
+            <section class="metrics-grid" style="margin-top: 24px;">
+                <div class="metric-card library">
+                    <span style="color: var(--primary); font-size: 24px; font-weight: bold;">◎</span>
+                    <div>
+                        <p id="goal-metric-year" class="metric-value">0</p>
+                        <p id="goal-card-year-title" class="metric-label">Meta do ano</p>
+                    </div>
+                </div>
+
+                <div class="metric-card reading">
+                    <span style="color: var(--status-reading-text); font-size: 24px; font-weight: bold;">✓</span>
+                    <div>
+                        <p id="goal-metric-read" class="metric-value">0</p>
+                        <p class="metric-label">Lidos no total</p>
+                    </div>
+                </div>
+
+                <div class="metric-card want">
+                    <span style="color: var(--status-want-text); font-size: 24px; font-weight: bold;">↗</span>
+                    <div>
+                        <p id="goal-metric-pct" class="metric-value">0%</p>
+                        <p class="metric-label">Referência geral</p>
+                    </div>
+                </div>
+
+                <div class="metric-card read">
+                    <span style="color: var(--status-read-text); font-size: 24px; font-weight: bold;">▣</span>
+                    <div>
+                        <p id="goal-metric-missing" class="metric-value">0</p>
+                        <p class="metric-label">Faltam</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Painel Principal de Metas: Gráfico e Lista -->
+            <div class="goals-grid-main">
+
+                <!-- Gráfico de Metas ao Longo dos Anos -->
+                <section class="chart-card">
+                    <h2 class="aside-card-title">Metas ao longo dos anos</h2>
+                    <p class="aside-card-subtitle">Quantidade de livros planejados por ano</p>
+                    <div id="goals-chart" class="chart-container">
+                        <!-- Gerado dinamicamente via app.js -->
+                    </div>
+                </section>
+
+                <!-- Lista de Metas Anuais -->
+                <section class="goals-list-card">
+                    <h2 class="aside-card-title">Minhas metas</h2>
+                    <div id="goals-list" class="goals-list-items">
+                        <!-- Gerado dinamicamente via app.js -->
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Banner Inferior de Encorajamento -->
+            <section class="goals-footer-banner">
+                <div>
+                    <h2 style="font-size: 17px; font-weight: 700;">Uma meta de cada vez</h2>
+                    <p style="color: var(--text-muted); font-size: 13px; margin-top: 6px;">
+                        Continue lendo e mantenha seu ritmo. Cada livro conta.
+                    </p>
+                </div>
+                <button type="button" class="btn-secondary" onclick="openGoalModal()">
+                    Editar metas
+                </button>
+            </section>
+
+        </main>
+
+        <!-- ================================================================
+             TELA 4: LOGIN E CADASTRO
+             ================================================================ -->
+        <main id="view-login" class="view-section auth-page">
+
+            <!-- Lado Esquerdo: Banner da Marca e Ilustração -->
+            <section class="auth-side-brand">
+                <a href="#inicio" class="auth-brand-logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#246B55" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 6C9 4 6 4 3 5v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Z"/>
+                        <path d="M12 6v14"/>
+                    </svg>
+                    <span>LeituraJá</span>
+                </a>
+
+                <div class="auth-brand-text">
+                    <h1>Um espaço para suas leituras.</h1>
+                    <p>Guarde seus livros, acompanhe seu progresso e leia mais.</p>
+                </div>
+
+                <div class="auth-brand-art">
+                    <img src="assets/ilustracao-livros.svg" alt="Ilustração LeituraJá">
+                </div>
+
+                <p class="auth-brand-footer">Feito para quem gosta de ler.</p>
+            </section>
+
+            <!-- Lado Direito: Formulário Interativo -->
+            <section class="auth-side-form">
+                <div class="auth-form-container">
+                    <h2 id="auth-title" class="auth-title">Bem-vindo de volta</h2>
+                    <p id="auth-subtitle" class="auth-subtitle">Entre na sua conta para continuar lendo.</p>
+
+                    <form id="auth-form" class="auth-form">
+
+                        <!-- Campo Nome (visível apenas em modo cadastro) -->
+                        <div id="auth-name-group" class="form-group" style="display: none;">
+                            <label for="auth-nome" class="form-label">Nome completo</label>
+                            <input type="text" id="auth-nome" placeholder="Digite seu nome" class="form-input-simple">
                         </div>
 
-                    </a>
+                        <!-- Campo E-mail -->
+                        <div class="form-group">
+                            <label for="auth-email" class="form-label">E-mail</label>
+                            <div class="form-input-wrapper">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                                    <path d="m3 7 9 7 9-7"/>
+                                </svg>
+                                <input type="email" id="auth-email" value="gabriel@fei.edu.br" placeholder="seuemail@exemplo.com" required>
+                            </div>
+                        </div>
 
+                        <!-- Campo Senha -->
+                        <div class="form-group">
+                            <label for="auth-senha" class="form-label">Senha</label>
+                            <div class="form-input-wrapper">
+                                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#75837B" stroke-width="1.8" stroke-linecap="round">
+                                    <rect x="5" y="10" width="14" height="11" rx="2"/>
+                                    <path d="M8 10V7a4 4 0 0 1 8 0v3"/>
+                                </svg>
+                                <input type="password" id="auth-senha" value="12345678" placeholder="••••••••" minlength="6" required>
+                            </div>
+                        </div>
+
+                        <div id="auth-forgot-link" class="auth-forgot">
+                            <a href="#" onclick="alert('Funcionalidade demonstrativa: digite qualquer e-mail e senha para entrar!')">Esqueci minha senha</a>
+                        </div>
+
+                        <div id="auth-error-msg" class="form-error"></div>
+
+                        <button type="submit" id="auth-submit-btn" class="btn-primary btn-full" style="margin-top: 24px;">
+                            Entrar
+                        </button>
+                    </form>
+
+                    <div class="auth-toggle-row">
+                        <span id="auth-toggle-prompt">Ainda não tem uma conta?</span>
+                        <button type="button" id="auth-toggle-btn" class="auth-toggle-btn">Cadastre-se</button>
+                    </div>
+
+                    <p style="color: var(--text-muted); font-size: 12px; margin-top: 40px; text-align: center;">
+                        LeituraJá © 2026 - FEI CCP310
+                    </p>
                 </div>
+            </section>
 
-            </aside>
+        </main>
 
+        <!-- ================================================================
+             BARRA DE NAVEGAÇÃO INFERIOR (MOBILE)
+             ================================================================ -->
+        <nav id="mobile-nav" class="mobile-nav">
+            <button type="button" class="mobile-nav-item active" data-view="inicio">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                </svg>
+                <span>Início</span>
+            </button>
+            <button type="button" class="mobile-nav-item" data-view="biblioteca">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="4" width="4" height="16" rx="1"/>
+                    <rect x="9" y="4" width="4" height="16" rx="1"/>
+                    <path d="M16 5l4-1 2 15-4 1-2-15Z"/>
+                </svg>
+                <span>Biblioteca</span>
+            </button>
+            <button type="button" class="mobile-nav-item" data-view="metas">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <circle cx="12" cy="12" r="6"/>
+                    <circle cx="12" cy="12" r="2"/>
+                </svg>
+                <span>Metas</span>
+            </button>
+        </nav>
+
+        <!-- ================================================================
+             MODAL: ADICIONAR / EDITAR LIVRO
+             ================================================================ -->
+        <div id="modal-book" class="modal-backdrop">
+            <div class="modal-dialog">
+                <h2 id="modal-book-title" class="modal-title">Adicionar livro</h2>
+
+                <form id="book-form">
+                    <div class="form-group">
+                        <label for="book-title-input" class="form-label">Título</label>
+                        <input type="text" id="book-title-input" required maxlength="200" class="form-input-simple" placeholder="Ex: Duna">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="book-author-input" class="form-label">Autor</label>
+                        <input type="text" id="book-author-input" required maxlength="150" class="form-input-simple" placeholder="Ex: Frank Herbert">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="book-status-select" class="form-label">Status</label>
+                        <select id="book-status-select" class="form-input-simple">
+                            <option value="Quero ler">Quero ler</option>
+                            <option value="Lendo">Lendo</option>
+                            <option value="Lido">Lido</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row-2">
+                        <div class="form-group">
+                            <label for="book-total-input" class="form-label">Total de páginas</label>
+                            <input type="number" id="book-total-input" min="1" required class="form-input-simple" value="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="book-current-input" class="form-label">Página atual</label>
+                            <input type="number" id="book-current-input" min="0" required class="form-input-simple" value="0">
+                        </div>
+                    </div>
+
+                    <div id="book-form-error" class="form-error"></div>
+
+                    <div class="modal-actions">
+                        <button type="button" id="btn-cancel-book" class="btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
+
+                    <div style="margin-top: 16px; text-align: center;">
+                        <button type="button" id="btn-delete-book" class="btn-danger-text" style="display: none;">
+                            Excluir livro da biblioteca
+                        </button>
+                    </div>
+                </form>
+            </div>
         </div>
 
-    </main>
+        <!-- ================================================================
+             MODAL: ADICIONAR / EDITAR META
+             ================================================================ -->
+        <div id="modal-goal" class="modal-backdrop">
+            <div class="modal-dialog">
+                <h2 id="modal-goal-title" class="modal-title">Adicionar meta</h2>
 
-    <nav class="lg:hidden fixed bottom-0 left-0 w-full bg-white border-t border-[#E7EAE5] flex justify-around p-4 z-20">
+                <form id="goal-form">
+                    <div class="form-group">
+                        <label for="goal-year-input" class="form-label">Ano da meta</label>
+                        <input type="number" id="goal-year-input" min="2000" max="2100" required class="form-input-simple">
+                    </div>
 
-        <a href="index.html" class="text-[#246B55] font-bold text-sm">
-            Início
-        </a>
+                    <div class="form-group">
+                        <label for="goal-qty-input" class="form-label">Quantidade de livros planejados</label>
+                        <input type="number" id="goal-qty-input" min="1" max="1000" required class="form-input-simple">
+                    </div>
 
-        <a href="biblioteca.html" class="text-sm hover:text-[#246B55]">
-            Biblioteca
-        </a>
+                    <div id="goal-form-error" class="form-error"></div>
 
-        <a href="metas.html" class="text-sm hover:text-[#246B55]">
-            Metas
-        </a>
+                    <div class="modal-actions">
+                        <button type="button" id="btn-cancel-goal" class="btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn-primary">Salvar</button>
+                    </div>
 
-    </nav>
+                    <div style="margin-top: 16px; text-align: center;">
+                        <button type="button" id="btn-delete-goal" class="btn-danger-text" style="display: none;">
+                            Excluir meta
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
+    </div>
+
+    <!-- Script de Lógica do Cliente -->
+    <script src="app.js"></script>
 </body>
 </html>
